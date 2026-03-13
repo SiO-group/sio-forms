@@ -7,7 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces",
+    "build:types": "npm run build --workspace=@sio/form-types",
+    "build:builder": "npm run build --workspace=@sio/form-builder",
+    "build:react": "npm run build --workspace=@sio/form-react",
+    "build": "npm run build:types && npm run build:builder && npm run build:react",
     "test": "npm run test --workspaces --if-present",
     "lint": "eslint \"packages/**/src/**/*.{ts,tsx}\" --ext .ts,.tsx",
     "lint:fix": "eslint \"packages/**/*.{ts,tsx}\" --fix",
