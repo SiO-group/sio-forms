@@ -1,0 +1,134 @@
+@use "sass:map";
+@use "sass:math";
+
+$grid-columns: 12;
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+) !default;
+
+:root {
+  --sio-grid-gutter: 15px;
+}
+
+@function breakpoint($name) {
+  @return map.get($grid-breakpoints, $name);
+}
+
+@mixin media-breakpoint($name) {
+  $min: breakpoint($name);
+
+  @if $min != 0 {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+
+
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.sio-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--sio-grid-gutter) * -1);
+  margin-right: calc(var(--sio-grid-gutter) * -1);
+}
+
+.sio-row .no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.sio-row .no-gutters > .sio-col,
+.sio-row .no-gutters > [class*='sio-col-'] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+%sio-grid-column {
+  position: relative;
+  width: 100%;
+  padding-left: var(--sio-grid-gutter);
+  padding-right: var(--sio-grid-gutter);
+}
+
+@each $breakpoint in map.keys($grid-breakpoints) {
+  $infix: if(sass(breakpoint($breakpoint) == null): ''; else: '-#{$breakpoint}');
+
+  @for $i from 1 through $grid-columns {
+    .sio-col#{$infix}-#{$i} {
+      @extend %sio-grid-column;
+    }
+  }
+
+  .sio-col#{$infix},
+  .sio-col#{$infix}-auto {
+    @extend %sio-grid-column;
+  }
+
+  @include media-breakpoint($breakpoint) {
+    .sio-col#{$infix} {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    .sio-col#{$infix}-auto {
+      flex: 0 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+
+    @for $i from 1 through $grid-columns {
+      .sio-col#{$infix}-#{$i} {
+        flex: 0 0 math.percentage(math.div($i, $grid-columns));
+        max-width: math.percentage(math.div($i, $grid-columns));
+      }
+    }
+
+    .sio-order#{$infix}-first {
+      order: -1;
+    }
+
+    .sio-order#{$infix}-last {
+      order: $grid-columns + 1;
+    }
+
+    @for $i from 0 through $grid-columns {
+      .sio-order#{$infix}-#{$i} {
+        order: $i;
+      }
+    }
+
+    @for $i from 0 through ($grid-columns - 1) {
+      @if not($infix == '' and $i == 0) {
+        .sio-offset#{$infix}-#{$i} {
+          margin-left: if(sass(math.div($i, $grid-columns) == 0): 0; else: math.percentage(math.div($i, $grid-columns)));
+        }
+      }
+    }
+
+    @if not($infix == '') {
+      .sio-d#{$infix}-none {
+        display: none;
+      }
+    }
+
+    @if not($infix == '') {
+      .d#{$infix}-block {
+        display: block;
+      }
+    }
+  }
+}

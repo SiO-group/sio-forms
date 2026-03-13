@@ -1,0 +1,42 @@
+{
+  "name": "@sio/form-react",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/sio-form-style.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./sio-form-style.css": "./dist/styles/index.css",
+    "./sio-button.css": "./dist/styles/components/button.css",
+    "./sio-link.css": "./dist/styles/components/link.css"
+  },
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:css": "sass src/assets/scss:dist/styles dist",
+    "build:js": "tsup src/index.ts --format cjs,esm --dts --tsconfig tsconfig.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@sio/form-types": "0.1.0",
+    "@sio/form-validation": "0.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4",
+    "sass": "^1.97.3",
+    "typescript": "^5",
+    "vite": "^5"
+  }
+}

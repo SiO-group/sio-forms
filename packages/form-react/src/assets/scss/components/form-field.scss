@@ -1,0 +1,34 @@
+:where(.form-field) {
+  position: relative;
+  margin: 5px 0 15px 0;
+}
+
+:where(.form-field label) {
+  color: var(--sio-form-label);
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+:where(.form-field label span) {
+  color: var(--sio-color-error);
+  font-weight: bold;
+}
+
+:where(.form-field__description) {
+  color: var(--sio-color-gray);
+  font-weight: 200;
+  font-size: 0.9em;
+  margin-left: 10px;
+  white-space: pre-wrap;
+}
+
+:where(.form-field__errors) {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0;
+  color: var(--sio-color-error);
+}
+
+:where(.form-field__errors-item) {
+  font-size: .9em
+}

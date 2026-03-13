@@ -1,0 +1,66 @@
+@use "../utilities/mixins" as *;
+@use "../tokens/colors" as *;
+
+:where(.btn--link) {
+  --sio-btn-bg: var(--sio-btn-link-bg);
+  --sio-btn-border: var(--sio-btn-link-border);
+  --sio-btn-text: var(--sio-btn-link-text);
+
+  --sio-btn-bg-hover: var(--sio-btn-bg);
+  --sio-btn-border-hover: var(--sio-btn-border);
+  --sio-btn-text-hover: color-mix(in srgb, var(--sio-btn-text) 85%, black);
+
+  --sio-btn-bg-disabled: var(--sio-btn-bg);
+  --sio-btn-border-disabled: var(--sio-btn-border);
+  --sio-btn-text-disabled: color-mix(in srgb, var(--sio-btn-text) 40%, white);
+}
+:where(.link) {
+  display: inline;
+  user-select: none;
+  transition: all 0.3s ease-in;
+  text-decoration: underline;
+}
+
+:where(.link:hover),
+:where(.link:active),
+:where(.link:focus),
+:where(.link.link--active) {
+  background: var(--sio-btn-bg-hover, var(--sio-btn-bg));
+  border-color: var(--sio-btn-border-hover, var(--sio-btn-border));
+  color: var(--sio-btn-text-hover, var(--sio-btn-text));
+}
+
+:where(.link:disabled),
+:where(.link.link--disabled) {
+  cursor: not-allowed;
+
+  background: var(--sio-btn-bg-disabled, var(--sio-btn-bg));
+  border-color: var(--sio-btn-border-disabled, var(--sio-btn-border));
+  color: var(--sio-btn-text-disabled, var(--sio-btn-text));
+}
+
+@each $name, $color in $colors {
+  :where(.link--#{$name}) {
+    --sio-btn-bg: transparent;
+    --sio-btn-border: transparent;
+    --sio-btn-text: var(--sio-color-#{$name});
+  }
+}
+
+:where(.link--block) {
+  display: block;
+  width: 100%;
+}
+
+:where(.link--lg) {
+  font-size: 1.1em;
+}
+
+:where(.link--sm) {
+  font-size: .7em;
+}
+
+:where(.link--loading) {
+  position: relative;
+  cursor: wait !important;
+}

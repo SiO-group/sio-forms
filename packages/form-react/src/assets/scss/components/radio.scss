@@ -1,0 +1,104 @@
+:where(.form-field__radio .form-field__control) {
+  display: flex !important;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+:where(.form-field__radio .form-field__control label) {
+  position: relative;
+  padding-left: 32px;
+}
+
+:where(.form-field__radio .form-field__control label > div) {
+  display: inline;
+  color: var(--sio-color-black);
+  font-weight: normal;
+}
+
+:where(.form-field__radio .form-field__control label):before {
+  content: '';
+  position: absolute;
+  border: 1px solid var(--sio-form-border);
+  background-color: var(--sio-form-bg);
+  border-radius: 50%;
+  cursor: pointer;
+  width: 17px;
+  height: 17px;
+  top: -1px;
+  left: 0;
+}
+
+:where(.form-field__radio .form-field__control label):after {
+  content: '';
+  background-color: var(--sio-color-primary);
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 13px;
+  height: 13px;
+  top: 2px;
+  left: 3px;
+  transform: scale(0);
+  transition: all .4s;
+}
+
+
+:where(.form-field__radio input[type='radio']) {
+  display: none !important;
+}
+
+:where(.form-field__radio label.form-field--has-value):before {
+  border-color: var(--sio-color-primary);
+}
+
+:where(.form-field__radio label.form-field--has-value):after {
+      transform: scale(1);
+}
+
+:where(.form-field__radio-inline .form-field__control) {
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+:where(.form-field__radio.form-field--has-errors label):before {
+  border-color: var(--sio-color-error);
+  background: rgba(var(--sio-color-error-rgb), .06);
+}
+
+:where(.form-field__radio.form-field--has-errors label.form-field--has-value):after {
+  border-color: var(--sio-color-error);
+  background: var(--sio-color-error);
+}
+
+:where(.form-field__radio.form-field--disabled .form-field__control label) {
+  cursor: not-allowed;
+}
+
+:where(.form-field__radio.form-field--disabled .form-field__control label):before,
+:where(.form-field__radio.form-field--disabled .form-field__control label):after {
+  cursor: not-allowed;
+}
+
+:where(.form-field__radio.form-field--disabled .form-field__control label):before {
+  border-color: var(--sio-color-light-gray);
+  background-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, white);
+}
+
+:where(.form-field__radio.form-field--disabled .form-field__control label):after {
+  border-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, black);
+  background-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, black);
+
+  transform: scale(0);
+  transition: all .4s;
+}
+
+:where(.form-field__radio.form-field--disabled .form-field__control label.form-field--has-value):before {
+  border-color: var(--sio-color-light-gray);
+}
+
+:where(.form-field__radio.form-field--disabled .form-field__control label.form-field--has-value):after {
+  transform: scale(1);
+}

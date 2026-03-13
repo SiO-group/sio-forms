@@ -1,0 +1,35 @@
+:where(.form-field__select select) {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--var-color-gray);
+  font-size: 1em;
+  appearance: none;
+  cursor: pointer;
+}
+
+:where(.form-field__select-single .form-field__control) {
+  position: relative;
+}
+
+:where(.form-field__select-single .form-field__control):after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid var(--sio-color-light-gray);
+  border-bottom: 2px solid var(--sio-color-light-gray);
+  transform: translateY(-50%) rotate(45deg);
+  pointer-events: none;
+}
+
+:where(.form-field__select-single select) {
+  padding: 5px 28px 5px 10px;
+}
+
+:where(.form-field__select-multiple select) {
+  padding: 5px 10px;
+}

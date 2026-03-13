@@ -1,0 +1,80 @@
+@use "sass:color";
+
+:where(.form-field--has-value .form-field__control) {
+  color: var(--sio-color-black);
+  border-color: var(--sio-color-primary);
+}
+
+:where(.form-field--has-value .form-field__icon) {
+  color: var(--sio-color-primary);
+}
+
+:where(.form-field--focused .form-field__control) {
+  color: var(--sio-color-black);
+  border-color: var(--sio-color-primary);
+  box-shadow: inset 2px 0 10px 0 rgba(var(--sio-color-primary-rgb), 0.3);
+}
+
+:where(.form-field--focused .form-field__icon) {
+  color: var(--sio-color-primary);
+}
+
+:where(.form-field--disabled label) {
+  color: var(--sio-color-gray);
+}
+
+:where(.form-field--disabled .form-field__control) {
+  color: var(--sio-color-light-gray);
+  border-color: var(--sio-color-light-gray);
+  background-color: color-mix(in srgb, var(--sio-color-light-gray) 20%, white);
+}
+
+:where(.form-field--disabled input),
+:where(.form-field--disabled textarea) {
+  color: var(--sio-color-light-gray);
+  cursor: not-allowed;
+}
+
+:where(.form-field--disabled .form-field__icon) {
+  color: var(--sio-color-light-gray);
+}
+
+:where(.form-field--has-errors label) {
+  color: var(--sio-color-error);
+}
+
+:where(.form-field--has-errors .form-field__control) {
+  background-color: color-mix(in srgb, var(--sio-color-error) 15%, white);
+  border-color: var(--sio-color-error);
+}
+
+:where(.form-field--has-errors.form-field--focused .form-field__control) {
+  box-shadow: inset 2px 0 10px 0 rgba(var(--sio-color-error-rgb), 0.3);
+}
+
+:where(.form-field--has-errors input[type="range"])::-webkit-slider-runnable-track {
+  background: var(--sio-color-error);
+}
+
+:where(.form-field--has-errors .form-field__icon) {
+  color: var(--sio-color-error) !important;
+}
+
+:where(.form-field--hidden-layout .form-field__control) {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: unset;
+}
+
+:where(.form-field--hidden-layout input),
+:where(.form-field--hidden-layout textarea) {
+  color: unset;
+  width: unset;
+  padding: 0;
+  resize: unset;
+  display: unset;
+  border: unset;
+}

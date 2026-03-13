@@ -1,0 +1,49 @@
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray: #655f5d;
+$color-light-gray: #c6c6c6;
+
+$color-default: #3B82F6;
+$color-success: #10B981;
+$color-error: #EF4444;
+$color-warning: #F59E0B;
+$color-info: #06B6D4;
+
+$colors: (
+        success: $color-success,
+        error: $color-error,
+        warning: $color-warning,
+        info: $color-info,
+);
+
+:root {
+  --sio-color-white: #{$color-white};
+  --sio-color-black: #{$color-black};
+  --sio-color-gray: #{$color-gray};
+  --sio-color-light-gray: #{$color-light-gray};
+
+  --sio-color-primary: #{$color-default};
+  --sio-color-success: #{$color-success};
+  --sio-color-error: #{$color-error};
+  --sio-color-warning: #{$color-warning};
+  --sio-color-info: #{$color-info};
+
+  --sio-color-primary-rgb: 59, 130, 246;
+  --sio-color-error-rgb: 239, 68, 68;
+
+  --sio-form-label: var(--sio-color-primary);
+  --sio-form-border: var(--sio-color-light-gray);
+  --sio-form-bg: var(--sio-color-white);
+
+  --sio-btn-primary-bg: var(--sio-color-primary);
+  --sio-btn-primary-border: var(--sio-color-primary);
+  --sio-btn-primary-text: var(--sio-color-white);
+
+  --sio-btn-secondary-bg: transparent;
+  --sio-btn-secondary-border: var(--sio-color-primary);
+  --sio-btn-secondary-text: var(--sio-color-primary);
+
+  --sio-btn-link-bg: transparent;
+  --sio-btn-link-border: transparent;
+  --sio-btn-link-text: var(--sio-color-primary);
+}

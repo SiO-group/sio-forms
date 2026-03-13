@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"],
+  "references": [
+    { "path": "../form-types" },
+    { "path": "../form-validation" },
+    { "path": "../form-builder" },
+    { "path": "../form-react" },
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}

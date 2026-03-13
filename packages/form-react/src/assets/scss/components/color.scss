@@ -1,0 +1,29 @@
+:where(.form-field__color .form-field__control) {
+  max-width: 50px;
+}
+
+:where(.form-field__color input) {
+  padding: 0;
+  border-radius: var(--sio-form-border-radius);
+}
+
+:where(.form-field__color input[type="color" i]) {
+  inline-size: 50px;
+  block-size: 25.5px;
+  padding: 0;
+  border: none;
+}
+
+:where(.form-field__color input[type="color"])::-webkit-color-swatch-wrapper {
+  padding-block-end: 3px;
+  padding-block-start: 3px;
+  padding-inline-start: 3px;
+  padding-inline-end: 3px;
+  padding: 3px;
+  border: none;
+}
+
+:where(.form-field__color input[type="color"])::-webkit-color-swatch {
+  border: none;
+  border-radius: 2px;
+}

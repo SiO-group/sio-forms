@@ -1,0 +1,52 @@
+:where(.form-field__upload-file) {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+:where(.form-field input[type="file" i]) {
+  color: transparent;
+}
+
+:where(.form-field input)::file-selector-button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--sio-color-light-gray);
+  font-weight: 200;
+  font-size: 1em;
+}
+
+:where(.form-field__upload-file-label) {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--sio-color-black);
+}
+
+:where(.form-field__upload-file-section button) {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+:where(.form-field__upload-file-remove-button) {
+  background: transparent;
+  color: var(--sio-color-error);
+}
+
+:where(.form-field__upload-buttons) {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+:where(.form-field__upload-remove-all-button) {
+  gap: 5px;
+  background: transparent;
+  color: var(--sio-color-error);
+}

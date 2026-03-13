@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/form-types"},
+    { "path": "./packages/form-validation"},
+    { "path": "./packages/form-builder"},
+    { "path": "./packages/form-react"},
+  ]
+}

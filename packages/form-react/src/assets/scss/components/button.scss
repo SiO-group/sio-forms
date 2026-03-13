@@ -1,0 +1,164 @@
+@use "../utilities/mixins" as *;
+@use "../tokens/colors" as *;
+
+:where(.btn--primary) {
+  --sio-btn-bg: var(--sio-btn-primary-bg);
+  --sio-btn-border: var(--sio-btn-primary-border);
+  --sio-btn-text: var(--sio-btn-primary-text);
+
+  --sio-btn-bg-hover: color-mix(in srgb, var(--sio-btn-bg) 85%, black);
+  --sio-btn-border-hover: color-mix(in srgb, var(--sio-btn-border) 85%, black);
+  --sio-btn-text-hover: var(--sio-btn-text);
+
+  --sio-btn-bg-disabled: color-mix(in srgb, var(--sio-btn-bg) 40%, white);
+  --sio-btn-border-disabled: color-mix(in srgb, var(--sio-btn-border) 40%, white);
+  --sio-btn-text-disabled: color-mix(in srgb, var(--sio-btn-text) 60%, black);
+}
+
+:where(.btn--secondary) {
+  --sio-btn-bg: var(--sio-btn-secondary-bg);
+  --sio-btn-border: var(--sio-btn-secondary-border);
+  --sio-btn-text: var(--sio-btn-secondary-text);
+
+  --sio-btn-bg-hover: var(--sio-btn-bg);
+  --sio-btn-border-hover: color-mix(in srgb, var(--sio-btn-border) 85%, black);
+  --sio-btn-text-hover: var(--sio-btn-text);
+
+  --sio-btn-bg-disabled: var(--sio-btn-bg);
+  --sio-btn-border-disabled: color-mix(in srgb, var(--sio-btn-border) 40%, white);
+  --sio-btn-text-disabled: color-mix(in srgb, var(--sio-btn-text) 40%, white);
+}
+
+:where(.btn--link) {
+  --sio-btn-bg: var(--sio-btn-link-bg);
+  --sio-btn-border: var(--sio-btn-link-border);
+  --sio-btn-text: var(--sio-btn-link-text);
+
+  --sio-btn-bg-hover: var(--sio-btn-bg);
+  --sio-btn-border-hover: var(--sio-btn-border);
+  --sio-btn-text-hover: color-mix(in srgb, var(--sio-btn-text) 85%, black);
+
+  --sio-btn-bg-disabled: var(--sio-btn-bg);
+  --sio-btn-border-disabled: var(--sio-btn-border);
+  --sio-btn-text-disabled: color-mix(in srgb, var(--sio-btn-text) 40%, white);
+}
+
+:where(.btn) {
+  background-color: var(--sio-btn-bg);
+  color: var(--sio-btn-text);
+  display: inline-block;
+  font-size: .9em;
+  font-weight: 500;
+  user-select: none;
+  text-align: center;
+  border: 1px solid var(--sio-btn-border);
+  padding: 2px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  min-height: 22px;
+  transition: all .3s ease-in;
+  text-decoration: none;
+}
+
+:where(.btn--link) {
+  display: inline;
+  font-weight: unset;
+  user-select: none;
+  text-align: left;
+  padding: 0;
+  border-radius: unset;
+  min-height: unset;
+  transition: all 0.3s ease-in;
+  text-decoration: underline;
+}
+
+:where(.btn:hover),
+:where(.btn:active),
+:where(.btn:focus),
+:where(.btn.btn--active) {
+  background: var(--sio-btn-bg-hover, var(--sio-btn-bg));
+  border-color: var(--sio-btn-border-hover, var(--sio-btn-border));
+  color: var(--sio-btn-text-hover, var(--sio-btn-text));
+}
+
+:where(.btn:disabled),
+:where(.btn.btn--disabled) {
+  cursor: not-allowed;
+
+  background: var(--sio-btn-bg-disabled, var(--sio-btn-bg));
+  border-color: var(--sio-btn-border-disabled, var(--sio-btn-border));
+  color: var(--sio-btn-text-disabled, var(--sio-btn-text));
+}
+
+@each $name, $color in $colors {
+  :where(.btn--primary.btn--#{$name}) {
+    --sio-btn-bg: var(--sio-color-#{$name});
+    --sio-btn-border: var(--sio-color-#{$name});
+    --sio-btn-text: var(--sio-color-white);
+  }
+  :where(.btn--secondary.btn--#{$name}) {
+    --sio-btn-bg: transparent;
+    --sio-btn-border: var(--sio-color-#{$name});
+    --sio-btn-text: var(--sio-color-#{$name});
+  }
+  :where(.btn--link.btn--#{$name}) {
+    --sio-btn-bg: transparent;
+    --sio-btn-border: transparent;
+    --sio-btn-text: var(--sio-color-#{$name});
+  }
+}
+
+:where(.btn--block) {
+  display: block;
+  width: 100%;
+}
+
+:where(.btn--lg) {
+  padding: 5px 20px;
+  font-size: 1.1em;
+  min-height: 34px;
+}
+
+:where(.btn--sm) {
+  padding: 2.5px 5px;
+  font-size: .7em;
+  min-height: 23px;
+}
+
+:where(.btn--loading) {
+  position: relative;
+  cursor: wait !important;
+}
+
+:where(.btn__spinner) {
+  display: flex;
+  animation: spin 1s infinite linear;
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+:where(.btn__spinner svg) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+:where(.btn__spinner circle) {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-dasharray: 30 100;
+  stroke-linecap: round;
+}
+
+:where(.btn__loading-text) {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+:where(.btn-group) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}

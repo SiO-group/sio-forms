@@ -1,0 +1,112 @@
+@use "sass:color";
+
+:where(.form-field__control) {
+  border: 1px solid var(--sio-form-border);
+  background: var(--sio-form-bg);
+  position: relative;
+  font-size: 1em;
+  padding: 0;
+  margin: 2px 0 0;
+  display: flex;
+  justify-content: space-between;
+  border-radius: var(--sio-form-border-radius);
+  transition: color 300ms ease;
+}
+
+:where(.form-field__control input),
+:where(.form-field__control textarea) {
+  display: block;
+  color: var(--sio-color-gray);
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: var(--sio-form-padding-y) var(--sio-form-padding-x);
+  resize: vertical;
+  transition: color 300ms ease;
+}
+
+:where(.form-field__control input:focus),
+:where(.form-field__control textarea:focus),
+:where(.form-field__control select:focus) {
+  outline: none;
+  box-shadow: none;
+}
+
+:where(.form-field__control input::placeholder),
+:where(.form-field__control textarea::placeholder) {
+  color: var(--sio-color-light-gray);
+  font-weight: 200;
+  font-size: 1em;
+}
+
+:where(.form-field__icon) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  color: var(--sio-color-light-gray);
+  font-size: 1em;
+  margin-top: -1px;
+}
+
+:where(.form-field__action) {
+  color: var(--sio-color-white);
+  background-color: var(--sio-color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 3px 3px 0;
+  margin: -1px -1px -1px 0;
+  cursor: pointer;
+}
+
+:where(.form-field__spinner) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--sio-color-light-gray);
+  gap: 1px;
+  margin-right: 1px;
+}
+
+:where(.form-field__spinner .btn) {
+  padding: 0 5px;
+  min-height: unset;
+  font-size: .5em;
+  height: 11px;
+}
+
+:where(.form-field__spinner-btn) {
+  padding: 0 .5rem;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+:where(.form-field input)::-webkit-resizer,
+:where(.form-field input)::-webkit-inner-spin-button,
+:where(.form-field input)::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+:where(.form-field input[type="date" i]) {
+  font-family: Arial;
+}
+
+:where(.form-field input::-webkit-datetime-edit-text) {
+  color: var(--sio-color-primary);
+}
+
+:where(.form-field input)::-webkit-datetime-edit-day-field,
+:where(.form-field input)::-webkit-datetime-edit-month-field,
+:where(.form-field input)::-webkit-datetime-edit-year-field {
+  color: var(--sio-color-black);
+}
+
+:where(.form-field input)::-webkit-datetime-edit-day-field:focus,
+:where(.form-field input)::-webkit-datetime-edit-month-field:focus,
+:where(.form-field input)::-webkit-datetime-edit-year-field:focus {
+  background-color: color-mix(in srgb, rgb(var(--sio-color-primary)) 60%, white);
+  color: var(--sio-color-black);
+  border-radius: var(--sio-form-border-radius);
+}

@@ -1,0 +1,90 @@
+:where(.form-field__checkbox label) {
+  position: relative;
+  padding-left: 32px;
+}
+
+:where(.form-field__checkbox label > div) {
+  display: inline;
+  color: var(--sio-color-black);
+  font-weight: normal;
+}
+
+:where(.form-field__checkbox label):before {
+  content: '';
+  background-color: var(--sio-form-bg);
+  position: absolute;
+  border-radius: var(--sio-form-border-radius);
+  cursor: pointer;
+  border: 1px solid var(--sio-form-border);
+  width: 17px;
+  height: 17px;
+  left: 0;
+  top: -1px;
+}
+
+:where(.form-field__checkbox label):after {
+  content: '';
+  position: absolute;
+  background-color: var(--sio-color-primary);
+  width: 13px;
+  height: 13px;
+  top: 2px;
+  left: 3px;
+  transform: scale(0);
+  border-radius: var(--sio-form-border-radius);
+  cursor: pointer;
+  transition: all .4s;
+}
+
+:where(.form-field__checkbox input[type='checkbox']) {
+  display: none !important;
+}
+
+:where(.form-field__checkbox.form-field--has-value label):before {
+  border-color: var(--sio-color-primary);
+}
+
+:where(.form-field__checkbox.form-field--has-value label):after {
+  transform: scale(1);
+}
+
+:where(.form-field__checkbox.form-field--has-errors label):before {
+  border-color: var(--sio-color-error);
+  background: rgba(var(--sio-color-error-rgb), .06);
+}
+
+:where(.form-field__checkbox.form-field--has-errors.form-field--has-value label):after {
+  border-color: var(--sio-color-error);
+  background: var(--sio-color-error);
+}
+
+
+:where(.form-field__checkbox.form-field--disabled label) {
+  cursor: not-allowed;
+}
+
+:where(.form-field__checkbox.form-field--disabled label):before,
+:where(.form-field__checkbox.form-field--disabled label):after {
+  cursor: not-allowed;
+}
+
+:where(.form-field__checkbox.form-field--disabled label):before {
+  border-color: var(--sio-color-light-gray);
+  background-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, white);
+}
+
+:where(.form-field__checkbox.form-field--disabled label):after {
+  border-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, black);
+  background-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, black);
+
+  transform: scale(0);
+  transition: all .4s;
+}
+
+:where(.form-field__checkbox.form-field--disabled.form-field--has-value label):before {
+  border-color: var(--sio-color-light-gray);
+}
+
+:where(.form-field__checkbox.form-field--disabled.form-field--has-value label):after {
+  transform: scale(1);
+}

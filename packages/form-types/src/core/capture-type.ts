@@ -1,0 +1,1 @@
+export type CaptureType = 'user' | 'environment' | boolean;
