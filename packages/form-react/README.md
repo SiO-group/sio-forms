@@ -2,7 +2,6 @@
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 ![npm version](https://img.shields.io/badge/version-0.1.0-blue)
-![Build Status](https://img.shields.io/github/actions/workflow/status/sio-group/sio-forms/packages/form-react/ci.yml?branch=main)
 ![TypeScript](https://img.shields.io/badge/types-Yes-brightgreen)
 
 <!--

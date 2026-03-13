@@ -2,11 +2,11 @@
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 ![version](https://img.shields.io/badge/version-0.1.0-blue)
-![Build Status](https://img.shields.io/github/actions/workflow/status/sio-group/sio-forms/ci.yml?branch=main)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/sio-group/sio-form/webpack.yml)](https://github.com/SiO-group/sio-forms/actions/workflows/webpack.yml)
 ![TypeScript](https://img.shields.io/badge/types-Yes-brightgreen)
 
-![GitHub stars](https://img.shields.io/github/stars/sio-group/sio-forms?style=social)
-![GitHub forks](https://img.shields.io/github/forks/sio-group/sio-forms?style=social)
+[![GitHub stars](https://img.shields.io/github/stars/SiO-group/sio-forms?style=social)](https://github.com/SiO-group/sio-forms/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/sio-group/sio-forms?style=social)](https://github.com/SiO-group/sio-forms/forks)
 ![GitHub last commit](https://img.shields.io/github/last-commit/sio-group/sio-forms)
 
 <!--
