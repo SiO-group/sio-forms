@@ -1,6 +1,6 @@
-import { FieldConfigMap, FormField } from "@sio/form-types";
+import { FieldConfigMap, FormField } from "@sio-group/form-types";
 import { FieldState, FieldValue } from "../types";
-import { ValidationRule } from "@sio/form-types/src/core/valudation-rule";
+import { ValidationRule } from "@sio-group/form-types/src/core/valudation-rule";
 import {
   dateIsBiggerThan,
   dateIsSmallerThan,
@@ -9,7 +9,7 @@ import {
   isRequired,
   isSmallerThan,
   isUrl
-} from "@sio/form-validation";
+} from "@sio-group/form-validation";
 import { parseDateValue } from "./parse-date";
 
 export const createFieldState = (name: string, id: string, config: FormField): FieldState => {

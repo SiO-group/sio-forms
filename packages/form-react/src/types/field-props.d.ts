@@ -1,4 +1,4 @@
-import { AcceptType, CaptureType, IconType, Option, SelectOption, SpinnerVariant } from "@sio/form-types";
+import { AcceptType, CaptureType, IconType, Option, SelectOption, SpinnerVariant } from "@sio-group/form-types";
 import { Properties } from 'csstype';
 
 export type BaseFieldProps = {

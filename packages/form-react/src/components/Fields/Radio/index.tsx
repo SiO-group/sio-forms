@@ -1,5 +1,5 @@
 import React from "react";
-import { Option } from "@sio/form-types";
+import { Option } from "@sio-group/form-types";
 import { RadioFieldProps } from "../../../types/field-props";
 import InputWrapper from "../InputWrapper";
 import { Icon } from "../../Icon";

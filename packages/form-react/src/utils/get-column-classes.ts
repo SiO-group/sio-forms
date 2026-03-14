@@ -1,4 +1,4 @@
-import { LayoutType } from "@sio/form-types";
+import { LayoutType } from "@sio-group/form-types";
 
 export const getColumnClasses = (layout?: LayoutType, className?: string): string => {
   if (!layout) return 'sio-col-xs-12';

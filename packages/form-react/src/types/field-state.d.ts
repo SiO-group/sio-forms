@@ -1,5 +1,5 @@
-import { FieldConfigMap } from "@sio/form-types";
-import { ValidationRule } from "@sio/form-types/src/core/valudation-rule";
+import { FieldConfigMap } from "@sio-group/form-types";
+import { ValidationRule } from "@sio-group/form-types/src/core/valudation-rule";
 
 export type FieldType = keyof FieldConfigMap;
 

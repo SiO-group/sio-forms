@@ -1,4 +1,4 @@
-import { AcceptType } from "@sio/form-types";
+import { AcceptType } from "@sio-group/form-types";
 
 /**
  * Get the accept attribute for file inputs based on the provided accept-type.

@@ -1,5 +1,5 @@
 import { ComponentType, CSSProperties, ComponentPropsWithoutRef, HTMLAttributes } from "react";
-import { FormField } from "@sio/form-types";
+import { FormField } from "@sio-group/form-types";
 import { FormLayout } from "./form-layout";
 import { ButtonProps, LinkProps } from "./ui-props";
 

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useConnectionStatus } from "./useConnectionStatus";
-import { FormField, ValidationRule } from "@sio/form-types";
+import { FormField, ValidationRule } from "@sio-group/form-types";
 import { slugify } from "../utils/slugify";
 import { createFieldState } from "../utils/create-field-state";
 import { createFieldProps } from "../utils/create-field-props";

@@ -1,4 +1,4 @@
-import { SelectOption } from "@sio/form-types";
+import { SelectOption } from "@sio-group/form-types";
 import { SelectFieldProps } from "../../../types/field-props";
 import InputWrapper from "../InputWrapper";
 import { Icon } from "../../Icon";

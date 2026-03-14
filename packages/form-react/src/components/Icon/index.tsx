@@ -1,4 +1,4 @@
-import { IconType } from "@sio/form-types";
+import { IconType } from "@sio-group/form-types";
 import { ReactNode } from "react";
 
 export const Icon = ({ icon }: { icon?:IconType }): ReactNode | null => {
