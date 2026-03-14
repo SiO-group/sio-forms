@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- d1d7d64: Upgrade react peer dependancy
+
 ## 0.1.3
 
 ### Patch Changes
