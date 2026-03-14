@@ -26,8 +26,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@sio/form-types": "0.1.0",
-    "@sio/form-validation": "0.1.0"
+    "@sio-group/form-types": "0.1.0",
+    "@sio-group/form-validation": "0.1.0"
   },
   "peerDependencies": {
     "react": "^18",
