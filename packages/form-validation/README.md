@@ -310,13 +310,12 @@ This makes the library:
 
 ## Ecosystem
 
-`@sio/form-validation` is part of the SIO Form Builder suite:
+`@sio/form-validation` is part of the SIO Form ecosystem:
 
-- **[@sio/form-types](https://www.npmjs.com/package/@sio/form-types)** - Shared type definitions
-- **[@sio/form-builder](https://www.npmjs.com/package/@sio/form-builder)** - Define your form structure
-- **[@sio/form-validation](https://www.npmjs.com/packages/@sio/form-validation)** - This package: validate your data (you are here)
-- **[@sio/form-react](https://www.npmjs.com/package/@sio/form-react)** - React renderer and hooks for the builder
-- *More adapters planned: Vue, Svelte, etc.*
+- **[@sio/form-types](../form-types/README.md)** - Shared type definitions
+- **[@sio/form-builder](../form-builder/README.md)** - Define your form structure
+- **[@sio/form-validation](../form-validation/README.md)** - This package: Validate your data (you are here)
+- **[@sio/form-react](../form-react/README.md)** - React renderer and hooks for the builder
 
 This modular approach lets you use the same validation rules across different frameworks and form builders.
 

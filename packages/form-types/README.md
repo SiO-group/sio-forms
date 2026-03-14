@@ -293,11 +293,10 @@ const validations: ValidationRule<keyof FieldConfigMap>[] = [
 
 `@sio/form-types` is part of the SIO Form ecosystem:
 
-- **[@sio/form-types](https://www.npmjs.com/package/@sio/form-types)** - This package: shared type definitions (you are here)
-- **[@sio/form-builder](https://www.npmjs.com/package/@sio/form-builder)** - Define your form structure
-- **[@sio/form-validation](https://www.npmjs.com/package/@sio/form-validation)** - Validate your data
-- **[@sio/form-react](https://www.npmjs.com/package/@sio/form-react)** - React renderer and hooks
-- *More adapters planned: Vue, Svelte, etc.*
+- **[@sio/form-types](../form-types/README.md)** - This package: Shared type definitions (you are here)
+- **[@sio/form-builder](../form-builder/README.md)** - Define your form structure
+- **[@sio/form-validation](../form-validation/README.md)** - Validate your data
+- **[@sio/form-react](../form-react/README.md)** - React renderer and hooks for the builder
 
 ## Contributing
 

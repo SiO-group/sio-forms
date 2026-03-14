@@ -11,7 +11,7 @@
 
 A powerful, type-safe React form framework. This package provides ready-to-use form components with built-in validation, layout management, and extensive customization options. This package is designed to work seamlessly with `@sio/form-builder` and `@sio/form-validation`, but can be used independently.
 
-Part of the SIO Form Builder ecosystem, it consumes form definitions from `@sio/form-builder` and renders them with full type safety and accessibility in mind.
+Part of the SIO Form ecosystem, it consumes form definitions from `@sio/form-builder` and renders them with full type safety and accessibility in mind.
 
 ---
 
@@ -765,12 +765,12 @@ function RegistrationForm() {
 
 ## Ecosystem
 
-`@sio/form-react` is part of the SIO Form Builder suite:
+`@sio/form-react` is part of the SIO Form ecosystem:
 
-- **[@sio/form-types](https://www.npmjs.com/package/@sio/form-types)** - Shared type definitions
-- **[@sio/form-builder](https://www.npmjs.com/package/@sio/form-builder)** - Define your form structure
-- **[@sio/form-validation](https://npmjs.com/packages/@sio/form-validation)** - Validate your data
-- **[@sio/form-react](https://www.npmjs.com/package/@sio/form-react)** - This package: React renderer and hooks for the builder (you are here)
+- **[@sio/form-types](../form-types/README.md)** - Shared type definitions
+- **[@sio/form-builder](../form-builder/README.md)** - Define your form structure
+- **[@sio/form-validation](../form-validation/README.md)** - Validate your data
+- **[@sio/form-react](../form-react/README.md)** - This package: React renderer and hooks for the builder (you are here)
 
 ---
 

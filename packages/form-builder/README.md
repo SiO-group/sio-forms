@@ -10,7 +10,7 @@
 -->
 
 A fully typed, fluent API form builder for generating structured form definitions in TypeScript.
-This package is the foundation of the **@sio/form-builder-react** component, but can be used
+This package is the foundation of the **@sio/form-react** component, but can be used
 independently with any rendering layer (React, Vue, Svelte, or server-side rendering).
 
 Building complex forms often starts with defining their structure. While you *could* write a plain array of field objects, ensuring type-safety for every field's specific configuration (like `min`/`max` for numbers or `options` for selects) is tedious and repetitive. `@sio/form-builder` provides a fluent and fully typed API to define this structure, letting you focus on what fields you need, not *how* to type them correctly.
@@ -315,13 +315,12 @@ This makes the library:
 
 ## Ecosystem
 
-`@sio/form-builder` is the core of the SIO Form Builder suite:
+`@sio/form-builder` is the core of the SIO Form ecosystem:
 
-- **[@sio/form-types](https://www.npmjs.com/package/@sio/form-types)** - Shared type definitions
-- **[@sio/form-builder](https://www.npmjs.com/package/@sio/form-builder)** - This package: define your form structure (you are here)
-- **[@sio/form-validation](https://npmjs.com/packages/@sio/form-validation)** - Validate your data
-- **[@sio/form-react](https://www.npmjs.com/package/@sio/form-react)** - React renderer and hooks for the builder
-- *More adapters planned: Vue, Svelte, etc.*
+- **[@sio/form-types](../form-types/README.md)** - Shared type definitions
+- **[@sio/form-builder](../form-builder/README.md)** - This package: Define your form structure (you are here)
+- **[@sio/form-validation](../form-validation/README.md)** - Validate your data
+- **[@sio/form-react](../form-react/README.md)** - React renderer and hooks for the builder
 
 This modular approach lets you use the same form definitions across different frameworks or even generate server-side validated forms from the same structure.
 
