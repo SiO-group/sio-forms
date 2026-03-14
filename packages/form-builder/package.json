@@ -1,6 +1,7 @@
 {
   "name": "@sio-group/form-builder",
-  "version": "0.1.0",
+  "version": "0.1.3",
+  "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -18,7 +19,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@sio-group/form-types": "0.1.0"
+    "@sio-group/form-types": "0.1.3"
   },
   "keywords": [],
   "author": "",
