@@ -40,12 +40,12 @@ This separation gives you the flexibility to:
 
 ## Packages
 
-| Package                                                | Version                                                     | Description                                            | Documentation                                  |
-|--------------------------------------------------------|-------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------|
-| [**@sio/form-types**](./packages/form-types)           | ![version](https://img.shields.io/badge/version-0.1.0-blue) | Core TypeScript definitions shared across all packages | [README](./packages/form-types/README.md)      |
-| [**@sio/form-validation**](./packages/form-validation) | ![version](https://img.shields.io/badge/version-0.1.0-blue) | Composable validation functions with full type support | [README](./packages/form-validation/README.md) |
-| [**@sio/form-builder**](./packages/form-builder)       | ![version](https://img.shields.io/badge/version-0.1.0-blue) | Fluent API for defining form schemas                   | [README](./packages/form-builder/README.md)    |
-| [**@sio/form-react**](./packages/form-react)           | ![version](https://img.shields.io/badge/version-0.1.0-blue) | React components and hooks for rendering forms         | [README](./packages/form-react/README.md)      |
+| Package                                                | Version                                                       | Description                                            | Documentation                                  |
+|--------------------------------------------------------|---------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------|
+| [**@sio/form-types**](./packages/form-types)           | ![version](https://img.shields.io/npm/v/@sio/form-types)      | Core TypeScript definitions shared across all packages | [README](./packages/form-types/README.md)      |
+| [**@sio/form-validation**](./packages/form-validation) | ![version](https://img.shields.io/npm/v/@sio/form-validation) | Composable validation functions with full type support | [README](./packages/form-validation/README.md) |
+| [**@sio/form-builder**](./packages/form-builder)       | ![version](https://img.shields.io/npm/v/@sio/form-builder)    | Fluent API for defining form schemas                   | [README](./packages/form-builder/README.md)    |
+| [**@sio/form-react**](./packages/form-react)           | ![version](https://img.shields.io/npm/v/@sio/form-react)      | React components and hooks for rendering forms         | [README](./packages/form-react/README.md)      |
 
 ## Quick Start
 
