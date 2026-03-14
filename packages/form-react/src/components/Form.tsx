@@ -1,5 +1,5 @@
 import { ButtonContainerProps, FormConfig, FormContainerProps } from "../types/form-config";
-import { FormField } from "@sio/form-types";
+import { FormField } from "@sio-group/form-types";
 import React, { useMemo } from "react";
 import { useForm } from "../hooks/useForm";
 import { ButtonProps, LinkProps, FormLayout, RadioFieldProps, SelectFieldProps, TextareaFieldProps } from "../types";
