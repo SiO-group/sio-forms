@@ -22,8 +22,8 @@ npm install @sio-group/form-react
 ```
 
 **Peer Dependencies:**
-- `react`: ^18.0.0
-- `react-dom`: ^18.0.0
+- `react`: ^19.0.0
+- `react-dom`: ^19.0.0
 
 ---
 
