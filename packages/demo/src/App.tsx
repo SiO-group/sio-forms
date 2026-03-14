@@ -1,6 +1,6 @@
-import "@sio/form-react/sio-form-style.css";
-import { formBuilder } from "@sio/form-builder";
-import { Form } from "@sio/form-react";
+import "@sio-group/form-react/sio-form-style.css";
+import { formBuilder } from "@sio-group/form-builder";
+import { Form } from "@sio-group/form-react";
 
 function App() {
   const fields = formBuilder()

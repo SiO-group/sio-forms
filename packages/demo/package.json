@@ -8,10 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sio/form-types": "0.1.0",
-    "@sio/form-builder": "0.1.0",
-    "@sio/form-react": "0.1.0",
-    "@sio/form-validation": "0.1.0",
+    "@sio-group/form-types": "0.1.0",
+    "@sio-group/form-builder": "0.1.0",
+    "@sio-group/form-react": "0.1.0",
+    "@sio-group/form-validation": "0.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

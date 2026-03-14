@@ -27,10 +27,10 @@ This enables shared schemas between frontend and backend while maintaining full 
 
 Traditional form libraries tightly couple validation, state management, and rendering. SiO Forms takes a different approach by providing **modular packages** that work together seamlessly but can also be used independently:
 
-- **Define** your form structure with `@sio/form-builder`
-- **Validate** your data with `@sio/form-validation`
-- **Render** your forms with framework-specific adapters like `@sio/form-react`
-- **Share types** across all layers with `@sio/form-types`
+- **Define** your form structure with `@sio-group/form-builder`
+- **Validate** your data with `@sio-group/form-validation`
+- **Render** your forms with framework-specific adapters like `@sio-group/form-react`
+- **Share types** across all layers with `@sio-group/form-types`
 
 This separation gives you the flexibility to:
 - Use the same validation rules across different frameworks
@@ -42,10 +42,10 @@ This separation gives you the flexibility to:
 
 | Package                                                | Version                                                       | Description                                            | Documentation                                  |
 |--------------------------------------------------------|---------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------|
-| [**@sio/form-types**](./packages/form-types)           | ![version](https://img.shields.io/npm/v/@sio/form-types)      | Core TypeScript definitions shared across all packages | [README](./packages/form-types/README.md)      |
-| [**@sio/form-validation**](./packages/form-validation) | ![version](https://img.shields.io/npm/v/@sio/form-validation) | Composable validation functions with full type support | [README](./packages/form-validation/README.md) |
-| [**@sio/form-builder**](./packages/form-builder)       | ![version](https://img.shields.io/npm/v/@sio/form-builder)    | Fluent API for defining form schemas                   | [README](./packages/form-builder/README.md)    |
-| [**@sio/form-react**](./packages/form-react)           | ![version](https://img.shields.io/npm/v/@sio/form-react)      | React components and hooks for rendering forms         | [README](./packages/form-react/README.md)      |
+| [**@sio-group/form-types**](./packages/form-types)           | ![version](https://img.shields.io/npm/v/@sio-group/form-types)      | Core TypeScript definitions shared across all packages | [README](./packages/form-types/README.md)      |
+| [**@sio-group/form-validation**](./packages/form-validation) | ![version](https://img.shields.io/npm/v/@sio-group/form-validation) | Composable validation functions with full type support | [README](./packages/form-validation/README.md) |
+| [**@sio-group/form-builder**](./packages/form-builder)       | ![version](https://img.shields.io/npm/v/@sio-group/form-builder)    | Fluent API for defining form schemas                   | [README](./packages/form-builder/README.md)    |
+| [**@sio-group/form-react**](./packages/form-react)           | ![version](https://img.shields.io/npm/v/@sio-group/form-react)      | React components and hooks for rendering forms         | [README](./packages/form-react/README.md)      |
 
 ## Quick Start
 
@@ -54,12 +54,12 @@ Choose your entry point based on your needs:
 ### 🚀 I want a complete form solution with React
 
 ```bash
-npm install @sio/form-react @sio/form-builder @sio/form-validation
+npm install @sio-group/form-react @sio-group/form-builder @sio-group/form-validation
 ```
 
 ```tsx
-import { Form } from '@sio/form-react';
-import { formBuilder } from '@sio/form-builder';
+import { Form } from '@sio-group/form-react';
+import { formBuilder } from '@sio-group/form-builder';
 
 function ContactForm() {
   const fields = formBuilder()
@@ -93,11 +93,11 @@ function ContactForm() {
 ### 🔍 I only need validation
 
 ```bash
-npm install @sio/form-validation
+npm install @sio-group/form-validation
 ```
 
 ```typescript
-import { isEmail, isRequired } from '@sio/form-validation';
+import { isEmail, isRequired } from '@sio-group/form-validation';
 
 const validateEmail = isEmail('Invalid email');
 validateEmail('test@example.com'); // null
@@ -107,11 +107,11 @@ validateEmail('invalid'); // "Invalid email"
 ### 📝 I want to define forms without rendering
 
 ```bash
-npm install @sio/form-builder
+npm install @sio-group/form-builder
 ```
 
 ```typescript
-import { formBuilder } from '@sio/form-builder';
+import { formBuilder } from '@sio-group/form-builder';
 
 const schema = formBuilder()
   .addText('username')
@@ -140,10 +140,10 @@ const schema = formBuilder()
 
 ### Package Relationships
 
-- **@sio/form-types**: No dependencies, used by all other packages
-- **@sio/form-validation**: Depends on `form-types`
-- **@sio/form-builder**: Depends on `form-types` and optionally `form-validation`
-- **@sio/form-react**: Depends on `form-types`, `form-builder`, and optionally `form-validation`
+- **@sio-group/form-types**: No dependencies, used by all other packages
+- **@sio-group/form-validation**: Depends on `form-types`
+- **@sio-group/form-builder**: Depends on `form-types` and optionally `form-validation`
+- **@sio-group/form-react**: Depends on `form-types`, `form-builder`, and optionally `form-validation`
 
 ## Key Features
 

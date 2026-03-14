@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- Initial release of `@sio/form-builder` package
+- Initial release of `@sio-group/form-builder` package
 - Fluent API builder pattern with method chaining
 - Type-safe field definitions using generics
 - Support for all HTML5 input types:
@@ -38,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Initial beta release
 - Complete field type coverage
 - Comprehensive test suite
-- Integration with @sio/form-types package
+- Integration with @sio-group/form-types package
 - Documentation and usage examples
 
 ---
@@ -79,4 +79,4 @@ If you're using the beta version (0.x), please note that the API is considered s
 ## Dependencies
 
 This package depends on:
-- `@sio/form-types` - Shared type definitions for form fields
+- `@sio-group/form-types` - Shared type definitions for form fields

@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- Initial release of `@sio/form-validation` package
+- Initial release of `@sio-group/form-validation` package
 - Core validation functions:
 - TypeScript support with full type inference
 - Custom error message support with `{label}` placeholder (for most validators)
@@ -81,4 +81,4 @@ If you're using the beta version (0.x), please note that the API is considered s
 ## Dependencies
 
 This package depends on:
-- `@sio/form-types` - Shared type definitions for form fields
+- `@sio-group/form-types` - Shared type definitions for form fields

@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- Initial release of `@sio/form-react` package
+- Initial release of `@sio-group/form-react` package
 - **Form Component** - Complete form renderer with layout support
 - **useForm Hook** - Central form state management
 - **Individual Field Components**
@@ -92,6 +92,6 @@ If you're using the beta version (0.x), please note that the API is considered s
 ## Dependencies
 
 ### Internal Dependencies
-- `@sio/form-types` - Shared type definitions
-- `@sio/form-builder` - Form structure builder (optional)
-- `@sio/form-validation` - Validation rules (optional)
+- `@sio-group/form-types` - Shared type definitions
+- `@sio-group/form-builder` - Form structure builder (optional)
+- `@sio-group/form-validation` - Validation rules (optional)

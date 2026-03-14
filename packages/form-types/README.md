@@ -1,22 +1,22 @@
-# @sio/form-types
+# @sio-group/form-types
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
-![npm](https://img.shields.io/npm/v/@sio/form-types)
+![npm](https://img.shields.io/npm/v/@sio-group/form-types)
 ![TypeScript](https://img.shields.io/badge/types-Yes-brightgreen)
 
 <!--
-[![npm version](https://img.shields.io/npm/v/@sio/form-validation.svg)](https://www.npmjs.com/package/@sio/form-validation)
-[![npm downloads](https://img.shields.io/npm/dm/@sio/form-validation.svg)](https://www.npmjs.com/package/@sio/form-validation)
+[![npm version](https://img.shields.io/npm/v/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
+[![npm downloads](https://img.shields.io/npm/dm/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
 -->
 
-Lightweight TypeScript type definitions for building strongly typed forms in the SIO Form ecosystem. This package provides the core types used by `@sio/form-builder`, `@sio/form-validation` and `@sio/form-react`, ensuring type safety and consistency across the entire form building experience.
+Lightweight TypeScript type definitions for building strongly typed forms in the SIO Form ecosystem. This package provides the core types used by `@sio-group/form-builder`, `@sio-group/form-validation` and `@sio-group/form-react`, ensuring type safety and consistency across the entire form building experience.
 
 ---
 
 ## Installation
 
 ```bash
-npm install @sio/form-types
+npm install @sio-group/form-types
 ```
 
 ## Requirements
@@ -38,7 +38,7 @@ import type {
   FieldConfigMap,
   TextFieldConfig,
   ValidationRule
-} from '@sio/form-types';
+} from '@sio-group/form-types';
 
 // Define a typed form field
 const nameField: FormField = {
@@ -228,7 +228,7 @@ const wrongField: FormField = {
 ## Option Types
 
 ```typescript
-import { Option } from '@sio/form-types';
+import { Option } from '@sio-group/form-types';
 
 // Simple string options
 const stringOptions = ['Belgium', 'Netherlands', 'Luxembourg'];
@@ -244,8 +244,8 @@ const objectOptions: Option[] = [
 ## Validation Rules
 
 ```typescript
-import { ValidationRule } from '@sio/form-types';
-import { FieldConfigMap } from '@sio/form-types';
+import { ValidationRule } from '@sio-group/form-types';
+import { FieldConfigMap } from '@sio-group/form-types';
 
 // Generic validation rule
 const isRequired: ValidationRule<keyof FieldConfigMap> = (value, label) => {
@@ -264,11 +264,11 @@ const isEmail: ValidationRule<'email'> = (value, label = 'Email') => {
 };
 ```
 
-## Usage met @sio/form-builder
+## Usage met @sio-group/form-builder
 
 ```typescript
-import { formBuilder } from '@sio/form-builder';
-import type { FormField } from '@sio/form-types';
+import { formBuilder } from '@sio-group/form-builder';
+import type { FormField } from '@sio-group/form-types';
 
 const builder = formBuilder()
   .addText('name', { label: 'Name' })
@@ -277,11 +277,11 @@ const builder = formBuilder()
 const fields: FormField[] = builder.getFields();
 ```
 
-## Usage met @sio/form-validation
+## Usage met @sio-group/form-validation
 
 ```typescript
-import { isRequired, isEmail } from '@sio/form-validation';
-import type { ValidationRule } from '@sio/form-types';
+import { isRequired, isEmail } from '@sio-group/form-validation';
+import type { ValidationRule } from '@sio-group/form-types';
 
 const validations: ValidationRule<keyof FieldConfigMap>[] = [
   isRequired('Naam is verplicht'),
@@ -291,12 +291,12 @@ const validations: ValidationRule<keyof FieldConfigMap>[] = [
 
 ## Ecosystem
 
-`@sio/form-types` is part of the SIO Form ecosystem:
+`@sio-group/form-types` is part of the SIO Form ecosystem:
 
-- **[@sio/form-types](../form-types/README.md)** - This package: Shared type definitions (you are here)
-- **[@sio/form-builder](../form-builder/README.md)** - Define your form structure
-- **[@sio/form-validation](../form-validation/README.md)** - Validate your data
-- **[@sio/form-react](../form-react/README.md)** - React renderer and hooks for the builder
+- **[@sio-group/form-types](../form-types/README.md)** - This package: Shared type definitions (you are here)
+- **[@sio-group/form-builder](../form-builder/README.md)** - Define your form structure
+- **[@sio-group/form-validation](../form-validation/README.md)** - Validate your data
+- **[@sio-group/form-react](../form-react/README.md)** - React renderer and hooks for the builder
 
 ## Contributing
 

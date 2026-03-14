@@ -1,30 +1,30 @@
-# @sio/form-validation
+# @sio-group/form-validation
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
-![npm](https://img.shields.io/npm/v/@sio/form-validation)
+![npm](https://img.shields.io/npm/v/@sio-group/form-validation)
 ![TypeScript](https://img.shields.io/badge/types-Yes-brightgreen)
 
 <!--
-[![npm version](https://img.shields.io/npm/v/@sio/form-validation.svg)](https://www.npmjs.com/package/@sio/form-validation)
-[![npm downloads](https://img.shields.io/npm/dm/@sio/form-validation.svg)](https://www.npmjs.com/package/@sio/form-validation)
+[![npm version](https://img.shields.io/npm/v/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
+[![npm downloads](https://img.shields.io/npm/dm/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
 -->
 
 A fully typed, composable validation library for validating form inputs and data structures in TypeScript.
-This package is designed to work seamlessly with `@sio/form-builder` and `@sio/form-react`, but can be used independently with any validation needs.
+This package is designed to work seamlessly with `@sio-group/form-builder` and `@sio-group/form-react`, but can be used independently with any validation needs.
 
-Validating user input is crucial, but writing the same validation logic repeatedly is tedious and error-prone. While you could write custom validation functions for every field, ensuring type-safety and consistent error handling is challenging. `@sio/form-validation` provides a set of pre-built, fully typed validation functions that are composable, configurable, and framework-agnostic.
+Validating user input is crucial, but writing the same validation logic repeatedly is tedious and error-prone. While you could write custom validation functions for every field, ensuring type-safety and consistent error handling is challenging. `@sio-group/form-validation` provides a set of pre-built, fully typed validation functions that are composable, configurable, and framework-agnostic.
 
 ---
 
 ## Installation
 
 ```bash
-npm install @sio/form-validation
+npm install @sio-group/form-validation
 ```
 
 ## Quick Example
 ```javascript
-import { isRequired, isEmail, isPattern } from '@sio/form-validation';
+import { isRequired, isEmail, isPattern } from '@sio-group/form-validation';
 
 // Create validators
 const validateEmail = isEmail();
@@ -97,7 +97,7 @@ All validations in this library follow the same pattern:
 ### isRequired
 
 ```javascript
-import { isRequired } from '@sio/form-validation';
+import { isRequired } from '@sio-group/form-validation';
 
 const validate = isRequired('{label} moet ingevuld worden');
 
@@ -111,7 +111,7 @@ validate(0); // null (0 is considered valid)
 ### isEmail
 
 ```javascript
-import { isEmail } from '@sio/form-validation';
+import { isEmail } from '@sio-group/form-validation';
 
 const validate = isEmail('Ongeldig email adres');
 
@@ -124,7 +124,7 @@ validate('user@'); // "Ongeldig email adres"
 ### isUrl with Options
 
 ```javascript
-import { isUrl } from '@sio/form-validation';
+import { isUrl } from '@sio-group/form-validation';
 
 // Strict mode (default)
 const validateStrict = isUrl();
@@ -139,7 +139,7 @@ validateDev('http://localhost:3000'); // null
 ### isPattern
 
 ```javascript
-import { isPattern } from '@sio/form-validation';
+import { isPattern } from '@sio-group/form-validation';
 
 // With RegExp (letters and numbers)
 const validateCode = isPattern(/^[A-Z0-9]+$/);
@@ -159,7 +159,7 @@ validateCase('ABC123'); // null (case-insensitive)
 ### Number Validations
 
 ```javascript
-import { isBiggerThan, isSmallerThan } from '@sio/form-validation';
+import { isBiggerThan, isSmallerThan } from '@sio-group/form-validation';
 
 const validateAge = isBiggerThan(18, 'Je moet minimaal 18 jaar zijn');
 validateAge(25); // null
@@ -173,7 +173,7 @@ validatePrice(1500); // "Prijs mag maximaal €1000 zijn"
 ### Date Validations
 
 ```javascript
-import { dateIsBiggerThan, dateIsSmallerThan } from '@sio/form-validation';
+import { dateIsBiggerThan, dateIsSmallerThan } from '@sio-group/form-validation';
 
 const validateStart = dateIsBiggerThan(
   new Date('2024-01-01'),
@@ -195,7 +195,7 @@ validateTime('2023-12-31T11:00'); // "Dit mag niet voor 1-1-2024, 12:00 zijn"
 ### File Validation
 
 ```javascript
-import { isValidFile } from '@sio/form-validation';
+import { isValidFile } from '@sio-group/form-validation';
 
 // Single file
 const validateFile = isValidFile(1024, 'image/jpeg,image/png'); // max 1MB
@@ -207,10 +207,10 @@ const largeFile = new File(['x'.repeat(2 * 1024 * 1024)], 'large.jpg');
 validateFile(largeFile); // "large.jpg is te groot (max 1024 KB)."
 ```
 
-## Integration with @sio/form-builder
+## Integration with @sio-group/form-builder
 ```javascript
-import { formBuilder } from '@sio/form-builder';
-import { isRequired, isEmail, isPattern } from '@sio/form-validation';
+import { formBuilder } from '@sio-group/form-builder';
+import { isRequired, isEmail, isPattern } from '@sio-group/form-validation';
 
 const form = formBuilder()
   .addText('username', { 
@@ -240,7 +240,7 @@ The library is fully typed and enforces:
 - Type-safe error messages with placeholder support
 
 ```typescript
-import { isBiggerThan, ValidationRule } from '@sio/form-validation';
+import { isBiggerThan, ValidationRule } from '@sio-group/form-validation';
 
 // ✅ Correct: number expected
 const validateAge = isBiggerThan(18);
@@ -275,7 +275,7 @@ validateMin(16, 'Leeftijd'); // "Leeftijd moet minimaal 18 zijn"
 The following validators currently use predefined error messages:
 
 ```javascript
-import { isUrl, isValidFile } from '@sio/validation';
+import { isUrl, isValidFile } from '@sio-group/validation';
 
 // isUrl uses predefined messages based on configuration
 const validateUrl = isUrl(false, false, true);
@@ -310,12 +310,12 @@ This makes the library:
 
 ## Ecosystem
 
-`@sio/form-validation` is part of the SIO Form ecosystem:
+`@sio-group/form-validation` is part of the SIO Form ecosystem:
 
-- **[@sio/form-types](../form-types/README.md)** - Shared type definitions
-- **[@sio/form-builder](../form-builder/README.md)** - Define your form structure
-- **[@sio/form-validation](../form-validation/README.md)** - This package: Validate your data (you are here)
-- **[@sio/form-react](../form-react/README.md)** - React renderer and hooks for the builder
+- **[@sio-group/form-types](../form-types/README.md)** - Shared type definitions
+- **[@sio-group/form-builder](../form-builder/README.md)** - Define your form structure
+- **[@sio-group/form-validation](../form-validation/README.md)** - This package: Validate your data (you are here)
+- **[@sio-group/form-react](../form-react/README.md)** - React renderer and hooks for the builder
 
 This modular approach lets you use the same validation rules across different frameworks and form builders.
 

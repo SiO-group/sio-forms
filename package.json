@@ -1,5 +1,5 @@
 {
-  "name": "@sio/forms",
+  "name": "@sio-group/forms",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -7,10 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "build:types": "npm run build --workspace=@sio/form-types",
-    "build:builder": "npm run build --workspace=@sio/form-builder",
-    "build:react": "npm run build --workspace=@sio/form-react",
-    "build:validation": "npm run build --workspace=@sio/form-validation",
+    "build:types": "npm run build --workspace=@sio-group/form-types",
+    "build:builder": "npm run build --workspace=@sio-group/form-builder",
+    "build:react": "npm run build --workspace=@sio-group/form-react",
+    "build:validation": "npm run build --workspace=@sio-group/form-validation",
     "build": "npm run build:types && npm run build:builder && npm run build:validation && npm run build:react",
     "test": "npm run test --workspaces --if-present",
     "lint": "eslint \"packages/**/src/**/*.{ts,tsx}\" --ext .ts,.tsx",

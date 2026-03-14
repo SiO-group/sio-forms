@@ -1,31 +1,31 @@
-# @sio/form-builder
+# @sio-group/form-builder
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
-![npm](https://img.shields.io/npm/v/@sio/form-builder)
+![npm](https://img.shields.io/npm/v/@sio-group/form-builder)
 ![TypeScript](https://img.shields.io/badge/types-Yes-brightgreen)
 
 <!--
-[![npm version](https://img.shields.io/npm/v/@sio/form-validation.svg)](https://www.npmjs.com/package/@sio/form-validation)
-[![npm downloads](https://img.shields.io/npm/dm/@sio/form-validation.svg)](https://www.npmjs.com/package/@sio/form-validation)
+[![npm version](https://img.shields.io/npm/v/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
+[![npm downloads](https://img.shields.io/npm/dm/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
 -->
 
 A fully typed, fluent API form builder for generating structured form definitions in TypeScript.
-This package is the foundation of the **@sio/form-react** component, but can be used
+This package is the foundation of the **@sio-group/form-react** component, but can be used
 independently with any rendering layer (React, Vue, Svelte, or server-side rendering).
 
-Building complex forms often starts with defining their structure. While you *could* write a plain array of field objects, ensuring type-safety for every field's specific configuration (like `min`/`max` for numbers or `options` for selects) is tedious and repetitive. `@sio/form-builder` provides a fluent and fully typed API to define this structure, letting you focus on what fields you need, not *how* to type them correctly.
+Building complex forms often starts with defining their structure. While you *could* write a plain array of field objects, ensuring type-safety for every field's specific configuration (like `min`/`max` for numbers or `options` for selects) is tedious and repetitive. `@sio-group/form-builder` provides a fluent and fully typed API to define this structure, letting you focus on what fields you need, not *how* to type them correctly.
 
 ---
 
 ## Installation
 
 ```bash
-npm install @sio/form-builder
+npm install @sio-group/form-builder
 ```
 
 ## Quick Example
 ```javascript
-import { formBuilder } from '@sio/form-builder';
+import { formBuilder } from '@sio-group/form-builder';
 
 const form = formBuilder()
   .addText('firstName', { 
@@ -315,19 +315,19 @@ This makes the library:
 
 ## Ecosystem
 
-`@sio/form-builder` is the core of the SIO Form ecosystem:
+`@sio-group/form-builder` is the core of the SIO Form ecosystem:
 
-- **[@sio/form-types](../form-types/README.md)** - Shared type definitions
-- **[@sio/form-builder](../form-builder/README.md)** - This package: Define your form structure (you are here)
-- **[@sio/form-validation](../form-validation/README.md)** - Validate your data
-- **[@sio/form-react](../form-react/README.md)** - React renderer and hooks for the builder
+- **[@sio-group/form-types](../form-types/README.md)** - Shared type definitions
+- **[@sio-group/form-builder](../form-builder/README.md)** - This package: Define your form structure (you are here)
+- **[@sio-group/form-validation](../form-validation/README.md)** - Validate your data
+- **[@sio-group/form-react](../form-react/README.md)** - React renderer and hooks for the builder
 
 This modular approach lets you use the same form definitions across different frameworks or even generate server-side validated forms from the same structure.
 
 ## Intended Usage Pattern
 
 This package defines form structure only. It is the **core building block** for framework-specific
-renderers like `@sio/form-builder-react`.
+renderers like `@sio-group/form-builder-react`.
 
 It does **not**:
 - Render UI

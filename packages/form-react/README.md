@@ -1,24 +1,24 @@
-# @sio/form-react
+# @sio-group/form-react
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
-![npm](https://img.shields.io/npm/v/@sio/form-react)
+![npm](https://img.shields.io/npm/v/@sio-group/form-react)
 ![TypeScript](https://img.shields.io/badge/types-Yes-brightgreen)
 
 <!--
-[![npm version](https://img.shields.io/npm/v/@sio/form-validation.svg)](https://www.npmjs.com/package/@sio/form-validation)
-[![npm downloads](https://img.shields.io/npm/dm/@sio/form-validation.svg)](https://www.npmjs.com/package/@sio/form-validation)
+[![npm version](https://img.shields.io/npm/v/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
+[![npm downloads](https://img.shields.io/npm/dm/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
 -->
 
-A powerful, type-safe React form framework. This package provides ready-to-use form components with built-in validation, layout management, and extensive customization options. This package is designed to work seamlessly with `@sio/form-builder` and `@sio/form-validation`, but can be used independently.
+A powerful, type-safe React form framework. This package provides ready-to-use form components with built-in validation, layout management, and extensive customization options. This package is designed to work seamlessly with `@sio-group/form-builder` and `@sio-group/form-validation`, but can be used independently.
 
-Part of the SIO Form ecosystem, it consumes form definitions from `@sio/form-builder` and renders them with full type safety and accessibility in mind.
+Part of the SIO Form ecosystem, it consumes form definitions from `@sio-group/form-builder` and renders them with full type safety and accessibility in mind.
 
 ---
 
 ## Installation
 
 ```bash
-npm install @sio/form-react
+npm install @sio-group/form-react
 ```
 
 **Peer Dependencies:**
@@ -30,8 +30,8 @@ npm install @sio/form-react
 ## Quick Example
 
 ```tsx
-import { Form } from '@sio/form-react';
-import { formBuilder } from '@sio/form-builder';
+import { Form } from '@sio-group/form-react';
+import { formBuilder } from '@sio-group/form-builder';
 
 function ContactForm() {
   const fields = formBuilder()
@@ -91,7 +91,7 @@ function ContactForm() {
 The main component that renders your form with all fields and buttons.
 
 ```tsx
-import { Form } from '@sio/form-react';
+import { Form } from '@sio-group/form-react';
 
 <Form
   fields={fields}
@@ -127,7 +127,7 @@ import {
   DateInput,
   FileInput,
   TextInput 
-} from '@sio/form-react';
+} from '@sio-group/form-react';
 
 // Use with useForm hook
 const { register } = useForm();
@@ -234,7 +234,7 @@ const buttons = [
 A powerful hook for managing form state independently:
 
 ```tsx
-import { useForm } from '@sio/form-react';
+import { useForm } from '@sio-group/form-react';
 
 function CustomForm() {
   const { register, getValues, isValid, isBusy, reset, submit } = useForm();
@@ -277,7 +277,7 @@ function CustomForm() {
 You can dynamically render fields based on other field values.
 
 ```javascript
-import { useForm, Input, Checkbox } from '@sio/form-react';
+import { useForm, Input, Checkbox } from '@sio-group/form-react';
 
 function Example() {
   const { register, getValue } = useForm();
@@ -315,7 +315,7 @@ Default validation is automatically derived from the field configuration (`requi
 Additional validation rules can be added using the validations array.
 
 ```javascript
-import { Input } from '@sio/form-react';
+import { Input } from '@sio-group/form-react';
 
 <Input
   {...register('username', {
@@ -489,7 +489,7 @@ All standard HTML input types are supported:
 You can use the `useForm` hook to control how you use the form, centrally managing state, validation, and submission. This also demonstrates conditional rendering and error automation.
 
 ```javascript
-import { useForm, Input, Button } from '@sio/form-react';
+import { useForm, Input, Button } from '@sio-group/form-react';
 
 function FormWithHook() {
   const { register, getValue, isValid, isBusy, submit } = useForm();
@@ -536,7 +536,7 @@ All field components and buttons can also be used independently. You can keep an
 
 ```javascript
 import { useState } from 'react';
-import { Input, Button } from '@sio/form-react';
+import { Input, Button } from '@sio-group/form-react';
 
 function SimpleForm() {
   const [value, setValue] = useState('');
@@ -628,7 +628,7 @@ function SimpleForm() {
 Import the default styles:
 
 ```tsx
-import '@sio/form-react/sio-form-style.css';
+import '@sio-group/form-react/sio-form-style.css';
 ```
 
 ### Custom Styling
@@ -680,9 +680,9 @@ Example with Tailwind CSS:
 ## Complete Example
 
 ```tsx
-import { Form } from '@sio/form-react';
-import { formBuilder } from '@sio/form-builder';
-import '@sio/form-react/sio-form-style.css';
+import { Form } from '@sio-group/form-react';
+import { formBuilder } from '@sio-group/form-builder';
+import '@sio-group/form-react/sio-form-style.css';
 
 function RegistrationForm() {
   const fields = formBuilder()
@@ -765,12 +765,12 @@ function RegistrationForm() {
 
 ## Ecosystem
 
-`@sio/form-react` is part of the SIO Form ecosystem:
+`@sio-group/form-react` is part of the SIO Form ecosystem:
 
-- **[@sio/form-types](../form-types/README.md)** - Shared type definitions
-- **[@sio/form-builder](../form-builder/README.md)** - Define your form structure
-- **[@sio/form-validation](../form-validation/README.md)** - Validate your data
-- **[@sio/form-react](../form-react/README.md)** - This package: React renderer and hooks for the builder (you are here)
+- **[@sio-group/form-types](../form-types/README.md)** - Shared type definitions
+- **[@sio-group/form-builder](../form-builder/README.md)** - Define your form structure
+- **[@sio-group/form-validation](../form-validation/README.md)** - Validate your data
+- **[@sio-group/form-react](../form-react/README.md)** - This package: React renderer and hooks for the builder (you are here)
 
 ---
 

@@ -1,8 +1,8 @@
 ---
-"@sio/form-validation": patch
-"@sio/form-builder": patch
-"@sio/form-react": patch
-"@sio/form-types": patch
+"@sio-group/form-validation": patch
+"@sio-group/form-builder": patch
+"@sio-group/form-react": patch
+"@sio-group/form-types": patch
 ---
 
 minor changes in readme

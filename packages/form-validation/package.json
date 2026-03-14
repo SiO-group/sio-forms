@@ -1,5 +1,5 @@
 {
-  "name": "@sio/form-validation",
+  "name": "@sio-group/form-validation",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -18,7 +18,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@sio/form-types": "0.1.0"
+    "@sio-group/form-types": "0.1.0"
   },
   "keywords": [],
   "author": "",
