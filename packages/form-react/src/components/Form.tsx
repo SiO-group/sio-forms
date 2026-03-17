@@ -8,8 +8,8 @@ import { Checkbox, Input, Radio, Select, Textarea } from "./Fields";
 import { Link } from "./Link";
 import { Button } from "./Button";
 
-const DefaultContainer: React.FC<FormContainerProps> = ({ children, ...props }) => (
-  <form {...props} noValidate>{children}</form>
+const DefaultContainer: React.FC<FormContainerProps> = ({ children }) => (
+  <div>{children}</div>
 );
 
 const DefaultButtonContainer: React.FC<ButtonContainerProps> = ({ children }) => (
