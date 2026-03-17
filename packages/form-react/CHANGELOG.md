@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- 370b198: Update render method to render buttons outside of container
+
 ## 0.2.0
 
 ### Minor Changes
