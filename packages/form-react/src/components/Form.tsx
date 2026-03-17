@@ -155,9 +155,11 @@ export const Form = ({
   };
 
   return (
-    <Container className={className} style={style} noValidate>
-      {renderFields()}
+    <form className={className} style={style} noValidate>
+      <Container>
+        {renderFields()}
+      </Container>
       {renderButtons()}
-    </Container>
+    </form>
   );
 }

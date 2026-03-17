@@ -31,7 +31,7 @@ Most contributions affect **one specific package**, but the repository is instal
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/sio-solutions/sio-forms.git
+git clone https://github.com/sio-group/sio-forms.git
 cd sio-forms
 npm install
 ```
