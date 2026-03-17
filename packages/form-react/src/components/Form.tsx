@@ -146,7 +146,6 @@ export const Form = ({
             onClick={handleCancel}
             variant='secondary'
             label={cancelLabel}
-            disabled={!isDirty()}
           />
         )}
         {buttons?.map(renderButton)}
