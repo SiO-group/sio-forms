@@ -8,6 +8,4 @@ export type {
   FieldProps,
   FormConfig,
   FormLayout,
-  ButtonProps,
-  LinkProps,
 } from './types'

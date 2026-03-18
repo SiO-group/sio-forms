@@ -1,7 +1,7 @@
 import { ComponentType, CSSProperties, ComponentPropsWithoutRef, HTMLAttributes } from "react";
 import { FormField } from "@sio-group/form-types";
 import { FormLayout } from "./form-layout";
-import { ButtonProps, LinkProps } from "./ui-props";
+import type { LinkProps, ButtonProps } from "@sio-group/ui-core";
 
 type FormContainerProps = ComponentPropsWithoutRef<'form'>;
 type ButtonContainerProps = HTMLAttributes<HTMLDivElement>;

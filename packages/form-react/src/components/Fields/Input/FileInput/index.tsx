@@ -1,9 +1,9 @@
 import { ChangeEvent } from "react";
 import { FileFieldProps } from "../../../../types/field-props";
 import InputWrapper from "../../InputWrapper";
-import { Button } from "../../../Button";
 import { Icon } from "../../../Icon";
 import { isValidFile } from "@sio-group/form-validation";
+import { Button } from "@sio-group/ui-core";
 import { getAccept } from "../../../../utils/get-accept-string";
 import { CustomIcons } from "../../../../utils/custom-icons";
 import { getFileSize } from "../../../../utils/get-file-size";

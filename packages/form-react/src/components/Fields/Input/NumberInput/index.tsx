@@ -2,7 +2,7 @@ import { ChangeEvent, KeyboardEvent } from "react";
 import { NumberFieldProps } from "../../../../types/field-props";
 import InputWrapper from "../../InputWrapper";
 import { Icon } from "../../../Icon";
-import { Button } from "../../../Button";
+import { Button } from "@sio-group/ui-core";
 
 export const NumberInput = ({
 	value,

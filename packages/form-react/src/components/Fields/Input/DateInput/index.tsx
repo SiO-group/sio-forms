@@ -1,7 +1,7 @@
 import { DateFieldProps } from "../../../../types/field-props";
 import { RefObject, useRef } from "react";
 import InputWrapper from "../../InputWrapper";
-import { Button } from "../../../Button";
+import { Button } from "@sio-group/ui-core";
 import { Icon } from "../../../Icon";
 import { CustomIcons } from '../../../../utils/custom-icons'
 
