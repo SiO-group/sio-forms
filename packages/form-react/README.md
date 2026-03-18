@@ -4,11 +4,6 @@
 ![npm](https://img.shields.io/npm/v/@sio-group/form-react)
 ![TypeScript](https://img.shields.io/badge/types-Yes-brightgreen)
 
-<!--
-[![npm version](https://img.shields.io/npm/v/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
-[![npm downloads](https://img.shields.io/npm/dm/@sio-group/form-validation.svg)](https://www.npmjs.com/package/@sio-group/form-validation)
--->
-
 A powerful, type-safe React form framework. This package provides ready-to-use form components with built-in validation, layout management, and extensive customization options. This package is designed to work seamlessly with `@sio-group/form-builder` and `@sio-group/form-validation`, but can be used independently.
 
 Part of the SIO Form ecosystem, it consumes form definitions from `@sio-group/form-builder` and renders them with full type safety and accessibility in mind.
@@ -187,7 +182,7 @@ const layout = [
 
 ### Button Configuration
 
-Buttons can be configured as an array:
+Buttons can be configured as an array using the props from `@sio-group/ui-core`.
 
 ```tsx
 const buttons = [
@@ -207,7 +202,6 @@ const buttons = [
   },
   {
     type: 'link',
-    variant: 'link',
     color: 'info',
     label: 'Help',
     href: '/help'
@@ -215,15 +209,14 @@ const buttons = [
 ];
 ```
 
-**Button Props:**
-- `type: 'button' | 'link'`
-- `variant: 'primary' | 'secondary' | 'link'`
-- `color: 'default' | 'success' | 'warning' | 'error' | 'info'`
-- `label: string`
-- `onClick?: () => void` (for buttons)
-- `href?: string` (for links)
-- `loading?: boolean`
-- `disabled?: boolean`
+Button and link properties are inherited from the UI components:
+
+- `Button` from `@sio-group/ui-core`
+- `Link` from `@sio-group/ui-core`
+
+Refer to their documentation for all available props.
+
+[@sio-group/ui-core](https://github.com/SiO-group/UI-React/tree/main/packages/ui-core)
 
 ---
 
@@ -489,7 +482,8 @@ All standard HTML input types are supported:
 You can use the `useForm` hook to control how you use the form, centrally managing state, validation, and submission. This also demonstrates conditional rendering and error automation.
 
 ```javascript
-import { useForm, Input, Button } from '@sio-group/form-react';
+import { useForm, Input } from '@sio-group/form-react';
+import { Button } from '@sio-group/ui-core';
 
 function FormWithHook() {
   const { register, getValue, isValid, isBusy, submit } = useForm();
@@ -536,7 +530,8 @@ All field components and buttons can also be used independently. You can keep an
 
 ```javascript
 import { useState } from 'react';
-import { Input, Button } from '@sio-group/form-react';
+import { Input } from '@sio-group/form-react';
+import { Button } from '@sio-group/ui-core';
 
 function SimpleForm() {
   const [value, setValue] = useState('');
@@ -590,34 +585,6 @@ function SimpleForm() {
   );
 }
 ```
-
-### Button Props
-| Prop       | Type                                                       | Default     | Description             |
-|------------|------------------------------------------------------------|-------------|-------------------------|
-| `type`     | `'button' \| 'submit' \| 'reset'`                          | `'button'`  | Button type             |
-| `label`    | `string`                                                   | -           | Label of the Link       |
-| `onClick`  | `(e: React.MouseEvent) => void`                            | -           | Custom onClick function |
-| `variant`  | `'primary' \| 'secondary' \| 'link'`                       | `'primary'` | Visual variant          |
-| `color`    | `'default' \| 'error' \| 'success' \| 'warning' \| 'info'` | `'default'` | Color theme             |
-| `size`     | `'sm' \| 'md' \| 'lg'`                                     | `'md'`      | Button size             |
-| `block`    | `boolean`                                                  | `false`     | Full width              |
-| `loading`  | `boolean`                                                  | `false`     | Loading state           |
-| `disabled` | `boolean`                                                  | `false`     | Disabled state          |
-
-### Link Props
-| Prop       | Type                                                       | Default     | Description              |
-|------------|------------------------------------------------------------|-------------|--------------------------|
-| `label`    | `string`                                                   | -           | Label of the Link        |
-| `to`       | `string`                                                   | `'#'`       | URL or pad               |
-| `onClick`  | `(e: React.MouseEvent) => void`                            | -           | Custom onClick function  |
-| `color`    | `'default' \| 'error' \| 'success' \| 'warning' \| 'info'` | `'default'` | Color theme              |
-| `size`     | `'sm' \| 'md' \| 'lg'`                                     | `'md'`      | Button size              |
-| `block`    | `boolean`                                                  | `false`     | Full width               |
-| `loading`  | `boolean`                                                  | `false`     | Loading state            |
-| `disabled` | `boolean`                                                  | `false`     | Disabled state           |
-| `navigate` | `() => void`                                               | -           | Custom navigate function |
-| `external` | `boolean`                                                  | `false`     | Force external link      |
-
 
 ---
 
@@ -683,6 +650,7 @@ Example with Tailwind CSS:
 import { Form } from '@sio-group/form-react';
 import { formBuilder } from '@sio-group/form-builder';
 import '@sio-group/form-react/sio-form-style.css';
+import '@sio-group/ui-core/sio-core-style.css';
 
 function RegistrationForm() {
   const fields = formBuilder()

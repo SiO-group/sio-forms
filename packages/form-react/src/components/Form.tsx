@@ -5,8 +5,7 @@ import { useForm } from "../hooks/useForm";
 import { ButtonProps, LinkProps, FormLayout, RadioFieldProps, SelectFieldProps, TextareaFieldProps } from "../types";
 import { getColumnClasses } from "../utils/get-column-classes";
 import { Checkbox, Input, Radio, Select, Textarea } from "./Fields";
-import { Link } from "./Link";
-import { Button } from "./Button";
+import { Link, Button } from "@sio-group/ui-core";
 
 const DefaultContainer: React.FC<FormContainerProps> = ({ children }) => (
   <div>{children}</div>

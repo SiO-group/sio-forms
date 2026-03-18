@@ -14,5 +14,4 @@ export type { FieldSetters } from './field-setters';
 export type { FieldType, FieldState, FieldValue } from './field-state';
 export type { FormConfig } from './form-config';
 export type { FormLayout } from './form-layout';
-export type { ButtonProps, LinkProps } from './ui-props';
 export type { UseFormOptions } from './use-form-options';
