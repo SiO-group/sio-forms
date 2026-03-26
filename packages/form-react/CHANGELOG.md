@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0
+
+### Minor Changes
+
+- Feat: Add switch
+
+### Patch Changes
+
+- Updated dependencies
+  - @sio-group/form-types@0.2.0
+  - @sio-group/form-validation@0.1.4
+
 ## 0.4.5
 
 ### Patch Changes

@@ -1,0 +1,88 @@
+:where(.form-field__switch label) {
+  position: relative;
+  padding: 3px 0 0 44px;
+  cursor: pointer;
+}
+
+:where(.form-field__switch label > div) {
+  display: inline;
+  color: var(--sio-color-black);
+  font-weight: normal;
+}
+
+:where(.form-field__switch label):before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: var(--sio-form-border);
+  border: none;
+  cursor: pointer;
+  transition: background-color .3s ease;
+}
+
+:where(.form-field__switch label):after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  transform: translateX(0);
+  transition: transform .3s ease;
+}
+
+:where(.form-field__switch input[type='checkbox']) {
+  display: none !important;
+}
+
+// Actief — track blauw, thumb naar rechts
+:where(.form-field__switch.form-field--has-value label):before {
+  background-color: var(--sio-color-primary);
+  border-color: transparent;
+}
+
+:where(.form-field__switch.form-field--has-value label):after {
+  transform: translateX(16px);
+}
+
+// Error
+:where(.form-field__switch.form-field--has-errors label):before {
+  background-color: rgba(var(--sio-color-error-rgb), .3);
+}
+
+:where(.form-field__switch.form-field--has-errors.form-field--has-value label):before {
+  background-color: var(--sio-color-error);
+}
+
+// Disabled
+:where(.form-field__switch.form-field--disabled label) {
+  cursor: not-allowed;
+}
+
+:where(.form-field__switch.form-field--disabled label):before,
+:where(.form-field__switch.form-field--disabled label):after {
+  cursor: not-allowed;
+}
+
+:where(.form-field__switch.form-field--disabled label):before {
+  background-color: color-mix(in srgb, var(--sio-form-border) 50%, white);
+}
+
+:where(.form-field__switch.form-field--disabled label):after {
+  background-color: color-mix(in srgb, white 80%, gray);
+}
+
+:where(.form-field__switch.form-field--disabled.form-field--has-value label):before {
+  background-color: color-mix(in srgb, var(--sio-color-primary) 40%, white);
+}
+
+:where(.form-field__switch.form-field--disabled.form-field--has-value label):after {
+  transform: translateX(16px);
+}

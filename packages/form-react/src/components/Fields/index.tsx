@@ -1,4 +1,5 @@
 export * from './Checkbox';
+export * from './Switch';
 export * from './Input/Input';
 export { NumberInput } from './Input/NumberInput';
 export { RangeInput } from './Input/RangeInput';

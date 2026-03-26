@@ -1,6 +1,6 @@
 import {
   CheckboxFieldConfig, ColorFieldConfig, DateFieldConfig,
-  EmailFieldConfig,
+  EmailFieldConfig, SwitchFieldConfig,
   FileFieldConfig, HiddenFieldConfig, NumberFieldConfig, PasswordFieldConfig, RadioFieldConfig, RangeFieldConfig,
   SearchFieldConfig, SelectFieldConfig, TelephoneFieldConfig,
   TextareaFieldConfig,
@@ -14,6 +14,7 @@ export type FieldConfigMap = {
   textarea: TextareaFieldConfig;
   email: EmailFieldConfig;
   checkbox: CheckboxFieldConfig;
+  switch: SwitchFieldConfig;
   radio: RadioFieldConfig;
   select: SelectFieldConfig;
   creatable: SelectFieldConfig;

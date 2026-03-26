@@ -33,6 +33,13 @@ export type EmailFieldConfig = Base<'email'>;
 export type CheckboxFieldConfig = Base<'checkbox'>;
 
 /**
+ * Configuration for switch input fields.
+ *
+ * @see {@link Base} for common options
+ */
+export type SwitchFieldConfig = Base<'switch'>;
+
+/**
  * Configuration for tel input fields.
  *
  * @see {@link Base} for common options

@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import { useForm } from "../hooks/useForm";
 import { FormLayout, RadioFieldProps, SelectFieldProps, TextareaFieldProps } from "../types";
 import { getColumnClasses } from "../utils/get-column-classes";
-import { Checkbox, Input, Radio, Select, Textarea } from "./Fields";
+import { Checkbox, Input, Radio, Select, Textarea, Switch } from "./Fields";
 import { Link, Button } from "@sio-group/ui-core";
 import type { LinkProps, ButtonProps } from "@sio-group/ui-core";
 
@@ -46,6 +46,9 @@ export const Form = ({
 
       case 'checkbox':
         return <Checkbox {...register(field.name, field, renderLayout)} key={field.name} />;
+
+      case 'switch':
+        return <Switch {...register(field.name, field, renderLayout)} key={field.name} />;
 
       case 'radio':
         return <Radio {...register(field.name, field, renderLayout) as RadioFieldProps} key={field.name} />;
