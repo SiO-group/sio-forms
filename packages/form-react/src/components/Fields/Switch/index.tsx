@@ -1,11 +1,12 @@
 import React from "react";
-import { FieldProps } from "../../../types";
+import { SwitchFieldProps } from "../../../types";
 import InputWrapper from "../InputWrapper";
 import { Icon } from "../../Icon";
 
 export const Switch = ({
     value,
     onChange,
+    onToggle,
 
     name,
     id,
@@ -23,7 +24,7 @@ export const Switch = ({
     type,
     className,
     style,
-}: FieldProps) => {
+}: SwitchFieldProps) => {
   return (
     <InputWrapper
       type={type}
@@ -46,8 +47,12 @@ export const Switch = ({
           id={id}
           checked={value as boolean}
           onChange={(e) => {
-            onChange?.(e.target.checked);
-            setTouched?.(true);
+            if (onToggle) {
+              onToggle(e.target.checked);
+            } else {
+              onChange?.(e.target.checked);
+              setTouched?.(true);
+            }
           }}
           readOnly={readOnly}
           disabled={disabled}

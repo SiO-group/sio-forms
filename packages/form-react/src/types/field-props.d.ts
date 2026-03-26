@@ -82,6 +82,11 @@ export type RadioFieldProps = BaseFieldProps & {
   inline: boolean;
 };
 
+export type SwitchFieldProps = BaseFieldProps & {
+  type: "switch";
+  onToggle: (value: boolean) => void;
+}
+
 export type FieldProps =
   | FileFieldProps
   | TextareaFieldProps
@@ -91,4 +96,5 @@ export type FieldProps =
   | UrlFieldProps
   | SelectFieldProps
   | RadioFieldProps
-  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "creatable" | "radio"> });
+  | SwitchFieldProps
+  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "creatable" | "radio" | "switch"> });

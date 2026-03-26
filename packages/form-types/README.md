@@ -104,6 +104,7 @@ The `ValueType<T>` type maps each input type to its JavaScript type:
 | `'text'`, `'email'`, `'url'`, etc.     | `string`              |
 | `'number'`, `'range'`                  | `number`              |
 | `'checkbox'`                           | `boolean`             |
+| `'switch'`                             | `boolean`             |
 | `'file'`                               | `unknown`             |
 | `'select'`, `'creatable'`              | `Option \| Option[]`  |
 | `'radio'`                              | `string` (via config) |
@@ -127,6 +128,7 @@ The `ValueType<T>` type maps each input type to its JavaScript type:
 | `ColorFieldConfig`     | Color input configuration              | -                                                                 |
 | `FileFieldConfig`      | File input configuration               | `accept?`, `filesize?`, `multiple?`, `capture?`                   |
 | `CheckboxFieldConfig`  | Checkbox configuration                 | -                                                                 |
+| `SwitchFieldConfig`    | Switch configuration                   | `onToggle?: (value: boolean) => void`                             |
 | `RadioFieldConfig`     | Radio button configuration             | **`options: string[] \| Option[]`** (required)                    |
 | `SelectFieldConfig`    | Select dropdown configuration          | **`options: string[] \| Option[]`** (required), `multiple?`       |
 | `HiddenFieldConfig`    | Hidden input configuration             | -                                                                 |
@@ -166,6 +168,7 @@ type FieldConfigMap = {
   textarea: TextareaFieldConfig;
   email: EmailFieldConfig;
   checkbox: CheckboxFieldConfig;
+  switch: SwitchFieldConfig;
   radio: RadioFieldConfig;
   select: SelectFieldConfig;
   creatable: SelectFieldConfig;

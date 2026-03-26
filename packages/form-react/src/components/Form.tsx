@@ -2,7 +2,7 @@ import { ButtonContainerProps, FormConfig, FormContainerProps } from "../types/f
 import { FormField } from "@sio-group/form-types";
 import React, { useMemo } from "react";
 import { useForm } from "../hooks/useForm";
-import { FormLayout, RadioFieldProps, SelectFieldProps, TextareaFieldProps } from "../types";
+import { FormLayout, RadioFieldProps, SelectFieldProps, TextareaFieldProps, SwitchFieldProps } from "../types";
 import { getColumnClasses } from "../utils/get-column-classes";
 import { Checkbox, Input, Radio, Select, Textarea, Switch } from "./Fields";
 import { Link, Button } from "@sio-group/ui-core";
@@ -48,7 +48,7 @@ export const Form = ({
         return <Checkbox {...register(field.name, field, renderLayout)} key={field.name} />;
 
       case 'switch':
-        return <Switch {...register(field.name, field, renderLayout)} key={field.name} />;
+        return <Switch {...register(field.name, field, renderLayout) as SwitchFieldProps} key={field.name} />;
 
       case 'radio':
         return <Radio {...register(field.name, field, renderLayout) as RadioFieldProps} key={field.name} />;

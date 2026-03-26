@@ -37,7 +37,7 @@ export type CheckboxFieldConfig = Base<'checkbox'>;
  *
  * @see {@link Base} for common options
  */
-export type SwitchFieldConfig = Base<'switch'>;
+export type SwitchFieldConfig = Base<'switch'> & { onToggle?: (value: boolean) => void };
 
 /**
  * Configuration for tel input fields.

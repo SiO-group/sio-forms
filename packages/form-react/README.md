@@ -57,8 +57,6 @@ function ContactForm() {
 }
 ```
 
-### Voorbeeld
-
 ![Contact form](screenshots/contact-form.png)
 *A simple contact form*
 
@@ -76,6 +74,7 @@ function ContactForm() {
 - ✅ **File uploads** - Built-in file handling with validation
 - ✅ **Icons** - Support for HTML and component icons
 - ✅ **Flexible containers** - Custom form and button containers
+- ✅ **Switch** - Toggle component with direct action support
 
 ---
 
@@ -112,11 +111,12 @@ You can also use field components independently:
 ```tsx
 import { 
   useForm,
-  Input, 
-  Textarea, 
-  Select, 
-  Radio, 
+  Input,
+  Textarea,
+  Select,
+  Radio,
   Checkbox,
+  Switch,
   NumberInput,
   RangeInput,
   DateInput,
@@ -170,7 +170,7 @@ const layout = [
     layout: { sm: 12, md: 12, lg: 8 },
     fields: ['message'],
     className: 'custom-row',            // Optional CSS class
-    style: { marginBottom: '2rem' }      // Optional inline styles
+    style: { marginBottom: '2rem' }     // Optional inline styles
   }
 ];
 ```
@@ -179,6 +179,27 @@ const layout = [
 - `sm`: Small (≥640px)
 - `md`: Medium (≥768px)
 - `lg`: Large (≥1024px)
+
+### Layout with containers
+
+Wrap a group of fields in a custom container — for example a `Card` — by providing the `container` prop on a layout entry. The column classes are applied to the outer wrapper, the container renders inside it.
+
+```tsx
+import { Card } from '@sio-group/ui-card';
+
+const layout = [
+  {
+    layout: { md: 6 },
+    container: ({ children }) => <Card title="Persoonlijke gegevens">{children}</Card>,
+    fields: ['firstName', 'lastName'],
+  },
+  {
+    layout: { md: 6 },
+    container: ({ children }) => <Card title="Contactgegevens">{children}</Card>,
+    fields: ['email', 'phone'],
+  },
+];
+```
 
 ### Button Configuration
 
@@ -269,7 +290,7 @@ function CustomForm() {
 
 You can dynamically render fields based on other field values.
 
-```javascript
+```tsx
 import { useForm, Input, Checkbox } from '@sio-group/form-react';
 
 function Example() {
@@ -307,9 +328,7 @@ function Example() {
 Default validation is automatically derived from the field configuration (`required`, `min`, `max`, `email`, etc.).
 Additional validation rules can be added using the validations array.
 
-```javascript
-import { Input } from '@sio-group/form-react';
-
+```tsx
 <Input
   {...register('username', {
     name: 'username',
@@ -348,6 +367,7 @@ All standard HTML input types are supported:
 ### Specialized Components
 
 #### NumberInput
+
 ```tsx
 <NumberInput
   {...register('age', {
@@ -368,6 +388,7 @@ All standard HTML input types are supported:
 *Number input with horizontal spinner*
 
 #### RangeInput
+
 ```tsx
 <RangeInput
   {...register('volume', {
@@ -388,6 +409,7 @@ All standard HTML input types are supported:
 *Range input with shown value*
 
 #### FileInput
+
 ```tsx
 <FileInput
   {...register('documents', {
@@ -410,6 +432,7 @@ All standard HTML input types are supported:
 *Multiple file input*
 
 #### Select
+
 ```tsx
 <Select
   {...register('country', {
@@ -437,13 +460,14 @@ All standard HTML input types are supported:
 *Single select input*
 
 #### Radio
+
 ```tsx
 <Radio
-  {...register('country', {
-    name: "country",
+  {...register('color', {
+    name: "color",
     type: "radio",
     config: {
-      label: "Country",
+      label: "Favorite color",
       options: ['Red', 'Green', 'Blue'],
       inline: true
     }
@@ -454,7 +478,94 @@ All standard HTML input types are supported:
 ![Radio](screenshots/radio-field.png)
 *Inline radio input*
 
+#### Checkbox
+
+A standard checkbox for boolean form values. Use `addCheckbox` in the form builder.
+
+```tsx
+<Checkbox
+  {...register('terms', {
+    name: 'terms',
+    type: 'checkbox',
+    config: {
+      label: 'I accept the terms and conditions',
+      required: true,
+    }
+  })}
+/>
+```
+
+With the form builder:
+
+```tsx
+const fields = formBuilder()
+  .addCheckbox('terms', {
+    label: 'I accept the terms and conditions',
+    required: true,
+  })
+  .getFields();
+```
+
+![Checkbox](screenshots/checkbox-field.png)
+*Checkbox input*
+
+#### Switch
+
+A pill-shaped toggle for boolean values. Uses `type: 'checkbox'` internally — use `addCheckbox` in the form builder.
+
+For standard form behavior where the value saves on submit:
+
+```tsx
+<Switch
+  {...register('newsletter', {
+    name: 'newsletter',
+    type: 'checkbox',
+    config: {
+      label: 'Receive newsletter',
+    }
+  })}
+/>
+```
+
+For immediate actions that bypass form submission — use `onToggle`:
+
+```tsx
+<Switch
+  {...register('active', {
+    name: 'active',
+    type: 'checkbox',
+    config: { label: 'Actief' }
+  })}
+  onToggle={(value) => updateUser(id, { active: value })}
+/>
+```
+
+When `onToggle` is provided it takes precedence over `onChange` — the value is never written to the form state.
+
+**When to use `onToggle` vs `onChange`:**
+
+|                      | `onChange`  | `onToggle`               |
+|----------------------|-------------|--------------------------|
+| Saves on             | Form submit | Immediately              |
+| Writes to form state | Yes         | No                       |
+| Use case             | Form fields | Status toggles, settings |
+
+With the form builder:
+
+```tsx
+const fields = formBuilder()
+  .addCheckbox('active', {
+    label: 'Actief',
+    onToggle: (value) => updateUser(value)
+  })
+  .getFields();
+```
+
+![Switch](screenshots/switch-field.png)
+*Switch toggle input*
+
 #### Textarea
+
 ```tsx
 <Textarea
   {...register('bio', {
@@ -479,9 +590,9 @@ All standard HTML input types are supported:
 
 ### Controlled Usage (with `useForm`)
 
-You can use the `useForm` hook to control how you use the form, centrally managing state, validation, and submission. This also demonstrates conditional rendering and error automation.
+You can use the `useForm` hook to control how you use the form, centrally managing state, validation, and submission.
 
-```javascript
+```tsx
 import { useForm, Input } from '@sio-group/form-react';
 import { Button } from '@sio-group/ui-core';
 
@@ -526,11 +637,11 @@ function FormWithHook() {
 
 ### Uncontrolled Usage (without `useForm`)
 
-All field components and buttons can also be used independently. You can keep and manage state for the form depending on your needs.
+All field components can also be used independently without the hook.
 
-```javascript
+```tsx
 import { useState } from 'react';
-import { Input } from '@sio-group/form-react';
+import { TextInput } from '@sio-group/form-react';
 import { Button } from '@sio-group/ui-core';
 
 function SimpleForm() {
@@ -542,20 +653,14 @@ function SimpleForm() {
 
   const handleChange = (value) => {
     if (!value) {
-      setError("This is wrong");
+      setError("This field is required");
       setIsValid(false);
     } else {
       setError("");
       setIsValid(true);
     }
-
     setValue(value);
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(value);
-  }
+  };
 
   return (
     <form noValidate>
@@ -576,7 +681,7 @@ function SimpleForm() {
       <Button
         type="submit"
         variant="primary"
-        onClick={handleSubmit}
+        onClick={(e) => { e.preventDefault(); console.log(value); }}
         disabled={!isValid}
       >
         Submit
@@ -592,15 +697,13 @@ function SimpleForm() {
 
 ### Default Styles
 
-Import the default styles:
-
 ```tsx
 import '@sio-group/form-react/sio-form-style.css';
 ```
 
 ### Custom Styling
 
-Each component accepts `className` and `style` props for custom styling:
+Each component accepts `className` and `style` props via the `styling` config:
 
 ```tsx
 <Input
@@ -610,9 +713,7 @@ Each component accepts `className` and `style` props for custom styling:
     config: {
       styling: {
         className: 'custom-input',
-        style: {
-          backgroundColor: '#f0f0f0'
-        }
+        style: { backgroundColor: '#f0f0f0' }
       }
     }
   })}
@@ -621,26 +722,14 @@ Each component accepts `className` and `style` props for custom styling:
 
 ### Layout Classes
 
-The form uses a responsive grid system. You can target these classes:
+The form uses a responsive grid system:
 
 - `.sio-row` - Grid container
-- `.sio-col-xs-*` - Column classes for breakpoints
-- `.sio-col-sm-*`
-- `.sio-col-md-*`
-- `.sio-col-lg-*`
-- `.sio-col-xl-*`
-
-Example with Tailwind CSS:
-```tsx
-<Form
-  fields={fields}
-  className="max-w-2xl mx-auto"
-  layout={[
-    { layout: { md: 6 }, fields: ['firstName'], className: 'pr-2' },
-    { layout: { md: 6 }, fields: ['lastName'], className: 'pl-2' }
-  ]}
-/>
-```
+- `.sio-col-xs-*` - Extra small breakpoint columns
+- `.sio-col-sm-*` - Small breakpoint columns
+- `.sio-col-md-*` - Medium breakpoint columns
+- `.sio-col-lg-*` - Large breakpoint columns
+- `.sio-col-xl-*` - Extra large breakpoint columns
 
 ---
 
@@ -654,64 +743,23 @@ import '@sio-group/ui-core/sio-core-style.css';
 
 function RegistrationForm() {
   const fields = formBuilder()
-    .addText('firstName', {
-      label: 'First name',
-      required: true,
-      layout: { md: 6 }
-    })
-    .addText('lastName', {
-      label: 'Last name',
-      required: true,
-      layout: { md: 6 }
-    })
-    .addEmail('email', {
-      label: 'Email',
-      required: true,
-      layout: { md: 6 }
-    })
-    .addTelephone('phone', {
-      label: 'Phone',
-      layout: { md: 6 }
-    })
-    .addPassword('password', {
-      label: 'Password',
-      required: true,
-      layout: { md: 6 }
-    })
-    .addPassword('confirmPassword', {
-      label: 'Confirm password',
-      required: true,
-      layout: { md: 6 }
-    })
-    .addCheckbox('terms', {
-      label: 'I accept the terms and conditions',
-      required: true
-    })
+    .addText('firstName', { label: 'First name', required: true })
+    .addText('lastName', { label: 'Last name', required: true })
+    .addEmail('email', { label: 'Email', required: true })
+    .addTelephone('phone', { label: 'Phone' })
+    .addPassword('password', { label: 'Password', required: true })
+    .addPassword('confirmPassword', { label: 'Confirm password', required: true })
+    .addCheckbox('terms', { label: 'I accept the terms and conditions', required: true })
+    .addCheckbox('newsletter', { label: 'Receive newsletter' })
     .getFields();
-
-  const handleSubmit = (values) => {
-    console.log('Registration:', values);
-  };
-
-  const customButtons = [
-    {
-      type: 'button',
-      variant: 'secondary',
-      color: 'info',
-      label: 'Clear form',
-      onClick: () => console.log('Clear')
-    }
-  ];
 
   return (
     <Form
       fields={fields}
-      submitAction={handleSubmit}
+      submitAction={(values) => console.log('Registration:', values)}
       submitLabel="Register"
       cancelShow={true}
       cancelAction={() => console.log('Cancelled')}
-      buttons={customButtons}
-      className="registration-form"
       layout={[
         { layout: { md: 6 }, fields: ['firstName'] },
         { layout: { md: 6 }, fields: ['lastName'] },
@@ -719,7 +767,8 @@ function RegistrationForm() {
         { layout: { md: 6 }, fields: ['phone'] },
         { layout: { md: 6 }, fields: ['password'] },
         { layout: { md: 6 }, fields: ['confirmPassword'] },
-        { layout: { md: 12 }, fields: ['terms'] }
+        { layout: { md: 12 }, fields: ['terms'] },
+        { layout: { md: 12 }, fields: ['newsletter'] },
       ]}
     />
   );
@@ -727,7 +776,7 @@ function RegistrationForm() {
 ```
 
 ![RegistrationForm](screenshots/registration-form.png)
-*A simple registration form with simple layout*
+*A simple registration form with layout*
 
 ---
 

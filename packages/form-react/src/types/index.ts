@@ -9,6 +9,7 @@ export type {
   UrlFieldProps,
   SelectFieldProps,
   RadioFieldProps,
+  SwitchFieldProps,
 } from './field-props';
 export type { FieldSetters } from './field-setters';
 export type { FieldType, FieldState, FieldValue } from './field-state';

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.0
+
+### Minor Changes
+
+- Feat: Add complete switch
+
+### Patch Changes
+
+- Updated dependencies
+  - @sio-group/form-types@0.3.0
+  - @sio-group/form-validation@0.1.5
+
 ## 0.5.0
 
 ### Minor Changes

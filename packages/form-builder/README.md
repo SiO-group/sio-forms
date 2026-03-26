@@ -153,6 +153,7 @@ addSelect(name, config)
 addCreatable(name, config)
 addRadio(name, config)
 addCheckbox(name, config)
+addSwitch(name, config)
 ```
 
 Example

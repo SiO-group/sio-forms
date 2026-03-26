@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- Feat: Add complete switch
+
+### Patch Changes
+
+- Updated dependencies
+  - @sio-group/form-types@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
