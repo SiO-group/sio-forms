@@ -138,23 +138,25 @@ return (
 
 ### Form Props
 
-| Prop                 | Type                           | Default                  | Description                  |
-|----------------------|--------------------------------|--------------------------|------------------------------|
-| `fields`             | `FormField[]`                  | (required)               | Array of form fields         |
-| `submitAction`       | `(values: any) => void`        | (required)               | Submit handler               |
-| `layout`             | `FormLayout[]`                 | `[]`                     | Custom layout configuration  |
-| `submitShow`         | `boolean`                      | `true`                   | Show submit button           |
-| `submitLabel`        | `string`                       | `'Bewaar'`               | Submit button text           |
-| `cancelShow`         | `boolean`                      | `false`                  | Show cancel button           |
-| `cancelLabel`        | `string`                       | `'Annuleren'`            | Cancel button text           |
-| `cancelAction`       | `() => void`                   | -                        | Cancel handler               |
-| `buttons`            | `(ButtonProps \| LinkProps)[]` | `[]`                     | Additional buttons           |
-| `extraValidation`    | `(values: any) => boolean`     | `() => true`             | Extra validation             |
-| `className`          | `string`                       | -                        | CSS class for form container |
-| `style`              | `React.CSSProperties`          | -                        | Inline styles                |
-| `disableWhenOffline` | `boolean`                      | `true`                   | Disable form when offline    |
-| `container`          | `React.ComponentType`          | `DefaultContainer`       | Custom form container        |
-| `buttonContainer`    | `React.ComponentType`          | `DefaultButtonContainer` | Custom button container      |
+| Prop                 | Type                           | Default                  | Description                                     |
+|----------------------|--------------------------------|--------------------------|-------------------------------------------------|
+| `fields`             | `FormField[]`                  | (required)               | Array of form fields                            |
+| `submitAction`       | `(values: any) => void`        | (required)               | Submit handler                                  |
+| `layout`             | `FormLayout[]`                 | `[]`                     | Custom layout configuration                     |
+| `submitShow`         | `boolean`                      | `true`                   | Show submit button                              |
+| `submitLabel`        | `string`                       | `'Bewaar'`               | Submit button text                              |
+| `submitOnlyDirty`    | `boolean`                      | `false`                  | Disable submit button when the form is not dity |
+| `cancelShow`         | `boolean`                      | `false`                  | Show cancel button                              |
+| `cancelLabel`        | `string`                       | `'Annuleren'`            | Cancel button text                              |
+| `cancelAction`       | `() => void`                   | -                        | Cancel handler                                  |
+| `cancelOnlyDirty`    | `boolean`                      | `false`                  | Show cancel button only when form is dirty      |
+| `buttons`            | `(ButtonProps \| LinkProps)[]` | `[]`                     | Additional buttons                              |
+| `extraValidation`    | `(values: any) => boolean`     | `() => true`             | Extra validation                                |
+| `className`          | `string`                       | -                        | CSS class for form container                    |
+| `style`              | `React.CSSProperties`          | -                        | Inline styles                                   |
+| `disableWhenOffline` | `boolean`                      | `true`                   | Disable form when offline                       |
+| `container`          | `React.ComponentType`          | `DefaultContainer`       | Custom form container                           |
+| `buttonContainer`    | `React.ComponentType`          | `DefaultButtonContainer` | Custom button container                         |
 
 ### Layout Configuration
 

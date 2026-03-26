@@ -24,9 +24,11 @@ export const Form = ({
     submitShow = true,
     submitAction,
     submitLabel = 'Bewaar',
+    submitOnlyDirt = false,
     cancelShow = false,
     cancelAction,
     cancelLabel = 'Annuleren',
+    cancelOnlyDirt = false,
     buttons = [],
     extraValidation = () => true,
     className,
@@ -145,10 +147,10 @@ export const Form = ({
             variant='primary'
             label={submitLabel}
             loading={isBusy()}
-            disabled={!isValid() || !extraValidation(getValues())}
+            disabled={!isValid() || !extraValidation(getValues()) || (submitOnlyDirt && !isDirty())}
           />
         )}
-        {cancelShow && (
+        {(cancelShow && (!cancelOnlyDirt || isDirty())) && (
           <Button
             type='button'
             onClick={handleCancel}

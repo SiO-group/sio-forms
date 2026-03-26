@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.2
+
+### Patch Changes
+
+- Feat: add OnlyDirty options to concel and submit
+
 ## 0.6.1
 
 ### Patch Changes

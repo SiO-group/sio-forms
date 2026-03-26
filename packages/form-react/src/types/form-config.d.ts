@@ -13,9 +13,11 @@ export interface FormConfig {
   submitShow?: boolean;
   submitAction: (values: Record<string, any>) => void | Promise<void>;
   submitLabel?: string;
+  submitOnlyDirt?: boolean;
   cancelShow?: boolean;
   cancelAction?: () => void;
   cancelLabel?: string;
+  cancelOnlyDirt?: boolean;
 
   buttons?: (ButtonProps | LinkProps)[];
   extraValidation?: (values: Record<string, any>) => boolean | Promise<boolean>
