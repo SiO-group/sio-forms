@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.1
+
+### Patch Changes
+
+- Fix: add onToggle to component
+
 ## 0.6.0
 
 ### Minor Changes

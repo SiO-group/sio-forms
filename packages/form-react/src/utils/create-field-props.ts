@@ -111,5 +111,13 @@ export const createFieldProps = (field: FieldState, setters: FieldSetters, disab
     };
   }
 
+  if (field.type === "switch") {
+    return {
+      ...baseProps,
+      type: field.type,
+      onToggle: field.onToggle,
+    };
+  }
+
   return { ...baseProps, type: field.type, };
 }
