@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.5
+
+### Patch Changes
+
+- Bug: Fix wrong rendering order
+
 ## 0.4.4
 
 ### Patch Changes

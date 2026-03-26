@@ -16,6 +16,8 @@ const DefaultButtonContainer: React.FC<ButtonContainerProps> = ({ children }) =>
   <div className="btn-group">{children}</div>
 );
 
+const DefaultFieldContainer: React.FC<{children: React.ReactNode}> = ({children}: {children: React.ReactNode}) => <>{children}</>
+
 export const Form = ({
     fields,
     layout = [],
@@ -79,30 +81,22 @@ export const Form = ({
     const content = target.map((element) => {
       if ('fields' in element) {
         const classes: string = getColumnClasses(element.layout, element.layout?.className);
+        const FieldContainer = element.container ?? DefaultFieldContainer;
 
-        const fieldContent = (
+        return (
           <div
             key={element.fields.join('-')}
             className={classes}
             style={element.layout?.style}
           >
-            {element.fields.map((name: string) => {
-              const field: FormField | undefined = fieldMap.get(name);
-              return field ? loadElement(field) : null;
-            })}
+            <FieldContainer>
+              {element.fields.map((name: string) => {
+                const field: FormField | undefined = fieldMap.get(name);
+                return field ? loadElement(field) : null;
+              })}
+            </FieldContainer>
           </div>
         );
-
-        if (element.container) {
-          const FieldContainer = element.container;
-          return (
-            <FieldContainer key={element.fields.join('-')}>
-              {fieldContent}
-            </FieldContainer>
-          )
-        }
-
-        return fieldContent;
       }
 
       return loadElement(element, hasLayout);
