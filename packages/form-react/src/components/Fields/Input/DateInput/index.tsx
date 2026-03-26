@@ -32,8 +32,8 @@ export const DateInput = ({
 	className,
 	style,
 }: DateFieldProps) => {
-	const inputRef: RefObject<HTMLInputElement> =
-		useRef<HTMLInputElement>(null);
+	const inputRef: RefObject<HTMLInputElement | null> =
+		useRef<HTMLInputElement | null>(null);
 
 	const showPicker = () => {
 		if (inputRef.current) {

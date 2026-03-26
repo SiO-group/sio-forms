@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.4
+
+### Patch Changes
+
+- Feat: add component support in layout
+
 ## 0.4.3
 
 ### Patch Changes

@@ -80,7 +80,7 @@ export const Form = ({
       if ('fields' in element) {
         const classes: string = getColumnClasses(element.layout, element.layout?.className);
 
-        return (
+        const fieldContent = (
           <div
             key={element.fields.join('-')}
             className={classes}
@@ -92,6 +92,17 @@ export const Form = ({
             })}
           </div>
         );
+
+        if (element.container) {
+          const FieldContainer = element.container;
+          return (
+            <FieldContainer key={element.fields.join('-')}>
+              {fieldContent}
+            </FieldContainer>
+          )
+        }
+
+        return fieldContent;
       }
 
       return loadElement(element, hasLayout);
