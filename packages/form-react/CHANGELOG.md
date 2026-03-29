@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.3
+
+### Patch Changes
+
+- Feat: Add setValues by ref
+
 ## 0.6.2
 
 ### Patch Changes

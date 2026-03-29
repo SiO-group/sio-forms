@@ -165,6 +165,15 @@ export const  useForm = ({ disableWhenOffline }: UseFormOptions = { disableWhenO
   };
 
   /**
+   * Set the values of fields
+   */
+  const setValues = useCallback((updates: Record<string, unknown>) => {
+    Object.entries(updates).forEach(([name, value]) => {
+      setValue(name, value);
+    });
+  }, [setValue]);
+
+  /**
    * Get all form values
    */
   const getValues = (): Record<string, any> => {
@@ -218,6 +227,7 @@ export const  useForm = ({ disableWhenOffline }: UseFormOptions = { disableWhenO
     register: register,
     unregister: unregister,
     setValue: setValue,
+    setValues: setValues,
     getValues: getValues,
     getValue: getValue,
     reset: reset,

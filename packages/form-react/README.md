@@ -350,6 +350,39 @@ Additional validation rules can be added using the validations array.
 ![Username](screenshots/invalid-username.png)
 *Custom validation for admin in username*
 
+### Imperative API via ref
+
+Use a ref to call form methods from outside the component — useful for updating field values in response to WebSocket events or other external triggers.
+
+```
+import { useRef } from 'react';
+import { Form } from '@sio-group/form-react';
+
+function UserEdit() {
+  const formRef = useRef(null);
+
+  // update specific fields without re-mounting the form
+  useWebSocket('user:updated', (payload) => {
+    formRef.current?.setValues(payload.updates);
+  });
+  
+  return (
+    <Form
+      ref={formRef}
+      ...
+    />
+  )
+}
+```
+
+**Available imperative methods:**
+
+| Method                                       | Description                     |
+|----------------------------------------------|---------------------------------|
+| `setValues(values: Record<string, unknown>)` | Update one or more field values |
+| `getValues()`                                | Read current form values        |
+| `reset()`                                    | Reset form to initial state     |
+
 ---
 
 ## Field Components

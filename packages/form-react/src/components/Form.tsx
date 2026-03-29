@@ -1,6 +1,6 @@
 import { ButtonContainerProps, FormConfig, FormContainerProps } from "../types/form-config";
 import { FormField } from "@sio-group/form-types";
-import React, { useMemo } from "react";
+import React, { useMemo, forwardRef, useImperativeHandle } from "react";
 import { useForm } from "../hooks/useForm";
 import { FormLayout, RadioFieldProps, SelectFieldProps, TextareaFieldProps, SwitchFieldProps } from "../types";
 import { getColumnClasses } from "../utils/get-column-classes";
@@ -18,28 +18,34 @@ const DefaultButtonContainer: React.FC<ButtonContainerProps> = ({ children }) =>
 
 const DefaultFieldContainer: React.FC<{children: React.ReactNode}> = ({children}: {children: React.ReactNode}) => <>{children}</>
 
-export const Form = ({
-    fields,
-    layout = [],
-    submitShow = true,
-    submitAction,
-    submitLabel = 'Bewaar',
-    submitOnlyDirt = false,
-    cancelShow = false,
-    cancelAction,
-    cancelLabel = 'Annuleren',
-    cancelOnlyDirt = false,
-    buttons = [],
-    extraValidation = () => true,
-    className,
-    style,
-    disableWhenOffline = false,
-    container: Container = DefaultContainer,
-    buttonContainer: ButtonContainer = DefaultButtonContainer,
-}: FormConfig) => {
-  const { register, getValues, isValid, isBusy, isDirty, reset, submit } = useForm({
+export const Form = forwardRef(({
+  fields,
+  layout = [],
+  submitShow = true,
+  submitAction,
+  submitLabel = 'Bewaar',
+  submitOnlyDirty = false,
+  cancelShow = false,
+  cancelAction,
+  cancelLabel = 'Annuleren',
+  cancelOnlyDirty = false,
+  buttons = [],
+  extraValidation = () => true,
+  className,
+  style,
+  disableWhenOffline = false,
+  container: Container = DefaultContainer,
+  buttonContainer: ButtonContainer = DefaultButtonContainer,
+}: FormConfig, ref) => {
+  const { register, getValues, setValues, isValid, isBusy, isDirty, reset, submit } = useForm({
     disableWhenOffline,
   });
+
+  useImperativeHandle(ref, () => ({
+    setValues,
+    reset,
+    getValues
+  }))
 
   const loadElement = (field: FormField, renderLayout: boolean = false) => {
     switch (field.type) {
@@ -147,10 +153,10 @@ export const Form = ({
             variant='primary'
             label={submitLabel}
             loading={isBusy()}
-            disabled={!isValid() || !extraValidation(getValues()) || (submitOnlyDirt && !isDirty())}
+            disabled={!isValid() || !extraValidation(getValues()) || (submitOnlyDirty && !isDirty())}
           />
         )}
-        {(cancelShow && (!cancelOnlyDirt || isDirty())) && (
+        {(cancelShow && (!cancelOnlyDirty || isDirty())) && (
           <Button
             type='button'
             onClick={handleCancel}
@@ -171,4 +177,4 @@ export const Form = ({
       {renderButtons()}
     </form>
   );
-}
+})
