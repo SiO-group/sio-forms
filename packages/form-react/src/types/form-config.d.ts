@@ -27,6 +27,6 @@ export interface FormConfig {
 
   disableWhenOffline?: boolean;
 
-  container?: ComponentType<FormContainerProps>;
-  buttonContainer?: ComponentType<ButtonContainerProps>;
+  container?: ComponentType<FormContainerProps> | ((props: FormContainerProps) => ReactNode);
+  buttonContainer?: ComponentType<ButtonContainerProps> | ((props: ButtonContainerProps) => ReactNode);
 }
