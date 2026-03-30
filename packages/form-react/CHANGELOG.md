@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.4
+
+### Patch Changes
+
+- Fix: Add Form display name
+
 ## 0.6.3
 
 ### Patch Changes

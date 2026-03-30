@@ -177,4 +177,6 @@ export const Form = forwardRef(({
       {renderButtons()}
     </form>
   );
-})
+});
+
+Form.displayName = 'Form';
