@@ -149,7 +149,10 @@ export const Form = forwardRef(({
         {submitShow && (
           <Button
             type='submit'
-            onClick={handleSubmit}
+            onClick={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
             variant='primary'
             label={submitLabel}
             loading={isBusy()}
