@@ -87,6 +87,11 @@ export type SwitchFieldProps = BaseFieldProps & {
   onToggle: (value: boolean) => void;
 }
 
+export type SearchFieldProps = BaseFieldProps & {
+  type: "search";
+  onSearch: (value: boolean) => void;
+}
+
 export type FieldProps =
   | FileFieldProps
   | TextareaFieldProps
@@ -97,4 +102,5 @@ export type FieldProps =
   | SelectFieldProps
   | RadioFieldProps
   | SwitchFieldProps
-  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "creatable" | "radio" | "switch"> });
+  | SearchFieldProps
+  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "creatable" | "radio" | "switch" | "search"> });

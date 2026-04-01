@@ -16,7 +16,7 @@ export type TextFieldConfig = Base<'text'>  & { pattern?: RegExp };
  *
  * @see {@link Base} for common options
  */
-export type SearchFieldConfig = Base<'search'>;
+export type SearchFieldConfig = Base<'search'> & { onSearch?: (value: string) => void };
 
 /**
  * Configuration for email input fields.

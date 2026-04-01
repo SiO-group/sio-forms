@@ -119,5 +119,13 @@ export const createFieldProps = (field: FieldState, setters: FieldSetters, disab
     };
   }
 
+  if (field.type === "search") {
+    return {
+      ...baseProps,
+      type: field.type,
+      onSearch: field.onSearch,
+    };
+  }
+
   return { ...baseProps, type: field.type, };
 }

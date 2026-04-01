@@ -74,7 +74,9 @@ export const Select = ({
       <select
         name={name}
         id={id}
-        value={value as string | string[]}
+        value={multiple
+          ? (value as string[])
+          : (value as string | number | undefined)}
         autoComplete={autocomplete ? autocomplete : 'off'}
         onChange={e => {
           if (multiple) {
@@ -95,7 +97,7 @@ export const Select = ({
         multiple={multiple}
         aria-label={label || placeholder}
       >
-        {placeholder && <option value="" selected disabled>{placeholder}{!label && required ? ' *' : ''}</option>}
+        {placeholder && <option value="" disabled>{placeholder}{!label && required ? ' *' : ''}</option>}
         {options.map(renderOption)}
       </select>
     </InputWrapper>

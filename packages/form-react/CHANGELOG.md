@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.7.0
+
+### Minor Changes
+
+- Feat: Add search func
+
+### Patch Changes
+
+- Updated dependencies
+  - @sio-group/form-types@0.4.0
+  - @sio-group/form-validation@0.1.6
+
 ## 0.6.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+### Minor Changes
+
+- Feat: Add search func
+
 ## 0.3.0
 
 ### Minor Changes

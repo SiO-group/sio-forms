@@ -3,13 +3,15 @@ import { NumberInput } from "./NumberInput";
 import { RangeInput } from "./RangeInput";
 import { DateInput } from "./DateInput";
 import { FileInput } from "./FileInput";
+import { SearchInput } from "./SearchInput";
 import { TextInput } from "./TextInput";
 import {
 	DateFieldProps,
 	FieldProps,
 	FileFieldProps,
 	NumberFieldProps,
-	RangeFieldProps
+	RangeFieldProps,
+	SearchFieldProps
 } from "../../../types";
 
 export const Input = memo(
@@ -37,6 +39,8 @@ export const Input = memo(
 							value={props.value as string}
 						/>
 					);
+				case 'search':
+					return <SearchInput {...props as SearchFieldProps} />
 				default:
 					return <TextInput {...props} />;
 			}
