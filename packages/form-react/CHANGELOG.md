@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.2
+
+### Patch Changes
+
+- Fix: prevent default action
+
 ## 0.7.1
 
 ### Patch Changes
