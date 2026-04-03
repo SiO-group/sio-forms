@@ -124,7 +124,7 @@ export const SearchInput = <T,> ({
 				disabled={disabled}
 				aria-label={label || placeholder}
 			/>
-			{(renderMode === 'inline' && focused && value.length > minLength) ? (
+			{(renderMode === 'inline' && focused && value.length >= minLength) ? (
 				<div className="search-dropdown">
 					{loading
 						? <div className="search-dropdown__item loading">Zoeken...</div>

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.7
+
+### Patch Changes
+
+- Bugfix
+
 ## 0.7.6
 
 ### Patch Changes
