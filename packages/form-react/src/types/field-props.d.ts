@@ -89,7 +89,7 @@ export type SwitchFieldProps = BaseFieldProps & {
 
 export type SearchFieldProps<T = unknown> = BaseFieldProps & {
   type: "search";
-  onSearch: (value: boolean) => Promise<T[]> | T[];
+  onSearch: (value: string) => Promise<T[]> | T[];
   optionLabel: (item: T) => string;
   optionValue: (item: T) => string;
   renderMode: 'inline' | 'none';

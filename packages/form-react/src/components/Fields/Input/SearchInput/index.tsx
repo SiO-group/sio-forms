@@ -80,14 +80,13 @@ export const SearchInput = <T,> ({
 
 	useEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
-			if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-				setFocused?.(false);
-				setResults([]);
-			}
+			if (containerRef.current?.contains(e.target as Node)) return;
+			setFocused?.(false);
+			setResults([]);
 		};
 
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => document.removeEventListener('mousedown', handleClickOutside);
+		document.addEventListener('mousedown', handleClickOutside, false);
+		return () => document.removeEventListener('mousedown', handleClickOutside, false);
 	}, []);
 
 	return (
@@ -125,7 +124,7 @@ export const SearchInput = <T,> ({
 				disabled={disabled}
 				aria-label={label || placeholder}
 			/>
-			{renderMode === 'inline' && focused && value ? (
+			{(renderMode === 'inline' && focused && value.length > minLength) ? (
 				<div className="search-dropdown">
 					{loading
 						? <div className="search-dropdown__item loading">Zoeken...</div>
@@ -139,7 +138,7 @@ export const SearchInput = <T,> ({
 										className="search-dropdown__item"
 										onClick={() => {
 											onSelect?.(item);
-											onChange(optionValue?.(item).toString() ?? '');
+											//onChange(optionValue?.(item).toString() ?? '');
 											setResults([]);
 										}}
 									>

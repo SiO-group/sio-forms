@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.6
+
+### Patch Changes
+
+- Bug: Fix for onFocus
+
 ## 0.7.5
 
 ### Patch Changes

@@ -490,6 +490,11 @@ import { Input } from '@sio-group/form-react';
       renderMode: 'inline',
       debounce: 300,
       minLength: 3,
+      onResults: (users, loading) => {
+        setResults(users);
+        setLoadingState(loading);
+      },
+      onSelect: (user) => setSelectedUser(user),
     }
   })}
 />
