@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.7.10
+
+### Patch Changes
+
+- Fix: add forwardRef
+
+## 0.7.9
+
+### Patch Changes
+
+- Fix: add forwardRef
+
 ## 0.7.8
 
 ### Patch Changes

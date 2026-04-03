@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, forwardRef } from 'react';
 
 interface InputWrapperProps {
 	id: string;
@@ -17,7 +17,7 @@ interface InputWrapperProps {
 	type?: string;
 }
 
-const InputWrapper: React.FC<InputWrapperProps> = ({
+const InputWrapper = forwardRef<HTMLDivElement, InputWrapperProps>(({
 	type = 'text',
 	id,
 	label,
@@ -32,7 +32,7 @@ const InputWrapper: React.FC<InputWrapperProps> = ({
 	className = '',
 	style = {},
 	children,
-}) => {
+}, ref) => {
 	const classes: string = [
 		'form-field',
 		`form-field__${type}`,
@@ -48,6 +48,7 @@ const InputWrapper: React.FC<InputWrapperProps> = ({
 
 	return (
 		<div
+			ref={ref}
 			className={classes}
 			style={style}
 			aria-required={required}
@@ -73,6 +74,6 @@ const InputWrapper: React.FC<InputWrapperProps> = ({
 			)}
 		</div>
 	);
-};
+});
 
 export default memo(InputWrapper);
