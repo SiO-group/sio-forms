@@ -112,26 +112,26 @@ The `ValueType<T>` type maps each input type to its JavaScript type:
 
 ### Field Configuration Types
 
-| Type                   | Description                            | Extra Properties                                                  |
-|------------------------|----------------------------------------|-------------------------------------------------------------------|
-| `Base<T>`              | Base configuration for all field types | -                                                                 |
-| `TextFieldConfig`      | Text input configuration               | `pattern?: RegExp`                                                |
-| `SearchFieldConfig`    | Search input configuration             | -                                                                 |
-| `EmailFieldConfig`     | Email input configuration              | -                                                                 |
-| `TelephoneFieldConfig` | Telephone input configuration          | `pattern?: RegExp`                                                |
-| `PasswordFieldConfig`  | Password input configuration           | -                                                                 |
-| `UrlFieldConfig`       | URL input configuration                | `allowLocalhost?`, `allowFtp?`, `secureOnly?`, `pattern?: RegExp` |
-| `NumberFieldConfig`    | Number input configuration             | `min?`, `max?`, `step?`                                           |
-| `RangeFieldConfig`     | Range input configuration              | `min?`, `max?`, `step?`                                           |
-| `TextareaFieldConfig`  | Textarea configuration                 | `rows?`, `cols?`                                                  |
-| `DateFieldConfig`      | Date/time input configuration          | `min?`, `max?`, `step?`                                           |
-| `ColorFieldConfig`     | Color input configuration              | -                                                                 |
-| `FileFieldConfig`      | File input configuration               | `accept?`, `filesize?`, `multiple?`, `capture?`                   |
-| `CheckboxFieldConfig`  | Checkbox configuration                 | -                                                                 |
-| `SwitchFieldConfig`    | Switch configuration                   | `onToggle?: (value: boolean) => void`                             |
-| `RadioFieldConfig`     | Radio button configuration             | **`options: string[] \| Option[]`** (required)                    |
-| `SelectFieldConfig`    | Select dropdown configuration          | **`options: string[] \| Option[]`** (required), `multiple?`       |
-| `HiddenFieldConfig`    | Hidden input configuration             | -                                                                 |
+| Type                   | Description                            | Extra Properties                                                                                          |
+|------------------------|----------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| `Base<T>`              | Base configuration for all field types | -                                                                                                         |
+| `TextFieldConfig`      | Text input configuration               | `pattern?: RegExp`                                                                                        |
+| `SearchFieldConfig`    | Search input configuration             | `onSearch`, `optionLabel`, `optionValue`, `renderMode`, `debounce`, `minLength`, `onResults`, `onSelect`  |
+| `EmailFieldConfig`     | Email input configuration              | -                                                                                                         |
+| `TelephoneFieldConfig` | Telephone input configuration          | `pattern?: RegExp`                                                                                        |
+| `PasswordFieldConfig`  | Password input configuration           | -                                                                                                         |
+| `UrlFieldConfig`       | URL input configuration                | `allowLocalhost?`, `allowFtp?`, `secureOnly?`, `pattern?: RegExp`                                         |
+| `NumberFieldConfig`    | Number input configuration             | `min?`, `max?`, `step?`                                                                                   |
+| `RangeFieldConfig`     | Range input configuration              | `min?`, `max?`, `step?`                                                                                   |
+| `TextareaFieldConfig`  | Textarea configuration                 | `rows?`, `cols?`                                                                                          |
+| `DateFieldConfig`      | Date/time input configuration          | `min?`, `max?`, `step?`                                                                                   |
+| `ColorFieldConfig`     | Color input configuration              | -                                                                                                         |
+| `FileFieldConfig`      | File input configuration               | `accept?`, `filesize?`, `multiple?`, `capture?`                                                           |
+| `CheckboxFieldConfig`  | Checkbox configuration                 | -                                                                                                         |
+| `SwitchFieldConfig`    | Switch configuration                   | `onToggle?: (value: boolean) => void`                                                                     |
+| `RadioFieldConfig`     | Radio button configuration             | **`options: string[] \| Option[]`** (required)                                                            |
+| `SelectFieldConfig`    | Select dropdown configuration          | **`options: string[] \| Option[]`** (required), `multiple?`                                               |
+| `HiddenFieldConfig`    | Hidden input configuration             | -                                                                                                         |
 
 ## Base Configuration Interface
 
@@ -154,6 +154,59 @@ interface Base<T extends InputType> {
     className?: string;
     style?: CSSProperties;
   };
+}
+```
+
+### Search Field Configuration
+
+The `search` field type supports asynchronous data fetching and flexible result mapping.
+It is designed to be UI-agnostic and works with both internal and external rendering strategies.
+
+```typescript
+type SearchFieldConfig<T = unknown> = Base<'search'> & {
+  /**
+   * Triggered when the user types in the search field.
+   * Can return results synchronously or asynchronously.
+   */
+  onSearch?: (value: string) => Promise<T[]> | T[];
+
+  /**
+   * Extracts a display label from a result item.
+   */
+  optionLabel: (item: T) => string;
+
+  /**
+   * Extracts a value from a result item.
+   */
+  optionValue?: (item: T) => string | number;
+
+  /**
+   * Controls how results are handled by the UI layer.
+   *
+   * - 'inline': results are expected to be rendered near the field
+   * - 'none': no internal handling, fully external rendering
+   */
+  renderMode?: 'inline' | 'none';
+
+  /**
+   * Minimum number of characters before triggering search.
+   */
+  minLength?: number;
+
+  /**
+   * Debounce delay in milliseconds.
+   */
+  debounce?: number;
+
+  /**
+   * Callback function that returns the results to the parent for rendering.
+   */
+  onResults?: (results: T[], loading: boolean) => void;
+
+  /**
+   * Callback function that returns the selected item.
+   */
+  onSelect?: (item: T) => void;
 }
 ```
 

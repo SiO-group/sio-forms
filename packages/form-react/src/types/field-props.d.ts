@@ -87,9 +87,16 @@ export type SwitchFieldProps = BaseFieldProps & {
   onToggle: (value: boolean) => void;
 }
 
-export type SearchFieldProps = BaseFieldProps & {
+export type SearchFieldProps<T = unknown> = BaseFieldProps & {
   type: "search";
-  onSearch: (value: boolean) => void;
+  onSearch: (value: boolean) => Promise<T[]> | T[];
+  optionLabel: (item: T) => string;
+  optionValue: (item: T) => string;
+  renderMode: 'inline' | 'none';
+  debounce: number;
+  minLength: number;
+  onResults: (results: T[], loading: boolean) => void;
+  onSelect: (item: T) => void;
 }
 
 export type FieldProps =

@@ -124,6 +124,13 @@ export const createFieldProps = (field: FieldState, setters: FieldSetters, disab
       ...baseProps,
       type: field.type,
       onSearch: field.onSearch,
+      optionLabel: field.optionLabel,
+      optionValue: field.optionValue ?? 'id',
+      renderMode: field.renderMode ?? 'inline',
+      debounce: field.debounce ?? 300,
+      minLength: field.minLength ??3,
+      onResults: field.onResults,
+      onSelect: field.onSelect,
     };
   }
 

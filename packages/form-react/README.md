@@ -75,6 +75,7 @@ function ContactForm() {
 - ✅ **Icons** - Support for HTML and component icons
 - ✅ **Flexible containers** - Custom form and button containers
 - ✅ **Switch** - Toggle component with direct action support
+- ✅ **Search** - Async search with inline or external result rendering
 
 ---
 
@@ -465,6 +466,51 @@ All standard HTML input types are supported:
 
 ![FileInput](screenshots/file-input.png)
 *Multiple file input*
+
+#### SearchInput
+
+The search input supports asynchronous data fetching via the `onSearch` configuration.
+Results can be rendered inline or handled externally depending on `renderMode`.
+
+```tsx
+import { Input } from '@sio-group/form-react';
+
+<Input
+  {...register('user', {
+    name: 'user',
+    type: 'search',
+    config: {
+      label: 'Search user',
+      onSearch: async (query) => {
+        const res = await fetch(`/api/users?q=${query}`);
+        return res.json();
+      },
+      optionLabel: (user) => user.name,
+      optionValue: (user) => user.id,
+      renderMode: 'inline',
+      debounce: 300,
+      minLength: 3,
+    }
+  })}
+/>
+```
+
+**Behavior:**
+
+- When `renderMode` is `'inline'`, results are displayed below the input.
+- When `renderMode` is `'none'`, the component does not render results.
+  You are responsible for handling and displaying search results externally.
+
+The component handles:
+
+- debounced search calls
+- async result handling
+- race condition protection
+
+The component does not:
+
+- assume any data structure
+- enforce a specific UI for results
 
 #### Select
 

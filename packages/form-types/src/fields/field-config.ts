@@ -15,8 +15,28 @@ export type TextFieldConfig = Base<'text'>  & { pattern?: RegExp };
  * Configuration for search input fields.
  *
  * @see {@link Base} for common options
- */
-export type SearchFieldConfig = Base<'search'> & { onSearch?: (value: string) => void };
+ *
+ * @property onSearch - Triggered when the user types in the search field
+ * @property optionLabel - Extracts the label from a result item
+ * @property optionValue - Extracts the value from a result item
+ * @property renderMode - Controls how results should be handled
+ *  - 'inline': results are expected to be rendered by the UI layer near the field
+ *  - 'none': no internal handling, fully external
+ *  @property debounce - Debounce delay in milliseconds
+ *  @property minLength - Minimum number of characters before triggering search
+ *  @property onResults - Callback function that returns the results to the parent for rendering
+ *  @property onSelect - Callback function that returns the selected item
+  */
+export type SearchFieldConfig<T = unknown> = Base<'search'> & {
+  onSearch?: (value: string) => Promise<T[]> | T[];
+  optionLabel?: (item: T) => string;
+  optionValue?: (item: T) => string | number;
+  renderMode?: 'inline' | 'none';
+  debounce?: number;
+  minLength?: number;
+  onResults?: (results: T[], loading: boolean) => void;
+  onSelect?: (item: T) => void;
+};
 
 /**
  * Configuration for email input fields.

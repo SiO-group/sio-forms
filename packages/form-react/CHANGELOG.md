@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.3
+
+### Patch Changes
+
+- Feat: add Search component result rendering
+- Updated dependencies
+  - @sio-group/form-types@0.4.1
+  - @sio-group/form-validation@0.1.7
+
 ## 0.7.2
 
 ### Patch Changes

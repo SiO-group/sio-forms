@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+### Patch Changes
+
+- Feat: add Search component result rendering
+
 ## 0.4.0
 
 ### Minor Changes
