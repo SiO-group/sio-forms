@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { createPortal } from 'react-dom';
 import InputWrapper from "../../InputWrapper";
 import { SearchFieldProps } from "../../../../types";
@@ -15,6 +15,7 @@ export const SearchInput = <T,> ({
 	minLength,
 	onResults,
 	onSelect,
+	portalTarget = '#modal-root',
 
 	name,
 	id,
@@ -98,6 +99,14 @@ export const SearchInput = <T,> ({
 		}
 	};
 
+	const target = useMemo(() => {
+		if (typeof portalTarget === "string") {
+			return document.querySelector(portalTarget) ?? document.body;
+		}
+
+		return portalTarget ?? document.body;
+	}, [portalTarget]);
+
 	useEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
 			if (containerRef.current?.contains(e.target as Node)) return;
@@ -171,7 +180,7 @@ export const SearchInput = <T,> ({
 								))
 							)}
 				</div>
-			, document.body) : null}
+			, target) : null}
 		</InputWrapper>
 	);
 };

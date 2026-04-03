@@ -97,6 +97,7 @@ export type SearchFieldProps<T = unknown> = BaseFieldProps & {
   minLength: number;
   onResults: (results: T[], loading: boolean) => void;
   onSelect: (item: T) => void;
+  portalTarget: string | HTMLElement,
 }
 
 export type FieldProps =

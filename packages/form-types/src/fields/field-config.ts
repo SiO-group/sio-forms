@@ -36,6 +36,7 @@ export type SearchFieldConfig<T = unknown> = Base<'search'> & {
   minLength?: number;
   onResults?: (results: T[], loading: boolean) => void;
   onSelect?: (item: T) => void;
+  portalTarget?: string | HTMLElement;
 };
 
 /**

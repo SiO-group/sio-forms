@@ -131,6 +131,7 @@ export const createFieldProps = (field: FieldState, setters: FieldSetters, disab
       minLength: field.minLength ??3,
       onResults: field.onResults,
       onSelect: field.onSelect,
+      portalTarget: field.portalTarget,
     };
   }
 

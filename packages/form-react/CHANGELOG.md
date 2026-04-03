@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.13
+
+### Patch Changes
+
+- Add portalTarget
+- Updated dependencies
+  - @sio-group/form-types@0.4.2
+  - @sio-group/form-validation@0.1.8
+
 ## 0.7.12
 
 ### Patch Changes
