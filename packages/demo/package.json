@@ -10,7 +10,7 @@
   "dependencies": {
     "@sio-group/form-types": "0.4.1",
     "@sio-group/form-builder": "0.3.2",
-    "@sio-group/form-react": "0.7.7",
+    "@sio-group/form-react": "0.7.8",
     "@sio-group/form-validation": "0.1.7",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
