@@ -39,6 +39,7 @@ export const SearchInput = <T,> ({
 }: SearchFieldProps<T>) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
+	const dropdownRef = useRef<HTMLDivElement>(null);
 	const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const requestRef = useRef<number>(0);
 
@@ -110,6 +111,8 @@ export const SearchInput = <T,> ({
 	useEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
 			if (containerRef.current?.contains(e.target as Node)) return;
+			if (dropdownRef.current?.contains(e.target as Node)) return;
+
 			setFocused?.(false);
 			setOpen(false);
 			setResults([]);
@@ -157,7 +160,7 @@ export const SearchInput = <T,> ({
 				aria-label={label || placeholder}
 			/>
 			{(renderMode === 'inline' && open) ? createPortal(
-				<div className="search-dropdown" style={dropdownStyle}>
+				<div ref={dropdownRef} className="search-dropdown" style={dropdownStyle}>
 					{loading
 						? <div className="search-dropdown__item loading">Zoeken...</div>
 						: results.length === 0

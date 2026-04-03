@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.15
+
+### Patch Changes
+
+- Fix: Add dropdownRef
+
 ## 0.7.14
 
 ### Patch Changes
