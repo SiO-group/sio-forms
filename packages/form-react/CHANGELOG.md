@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.12
+
+### Patch Changes
+
+- Fix: Focus and position
+
 ## 0.7.11
 
 ### Patch Changes

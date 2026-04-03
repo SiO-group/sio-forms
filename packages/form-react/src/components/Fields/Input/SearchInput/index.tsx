@@ -1,7 +1,8 @@
+import { useState, useRef, useEffect } from "react";
+import { createPortal } from 'react-dom';
 import InputWrapper from "../../InputWrapper";
 import { SearchFieldProps } from "../../../../types";
 import { Icon } from "../../../Icon";
-import { useState, useRef, useEffect } from "react";
 
 export const SearchInput = <T,> ({
 	value,
@@ -36,11 +37,14 @@ export const SearchInput = <T,> ({
 	style,
 }: SearchFieldProps<T>) => {
 	const containerRef = useRef<HTMLDivElement>(null);
+	const inputRef = useRef<HTMLInputElement>(null);
 	const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const requestRef = useRef<number>(0);
 
 	const [results, setResults] = useState<T[]>([]);
 	const [loading, setLoading] = useState<boolean>(false);
+	const [open, setOpen] = useState<boolean>(false);
+	const [dropdownStyle, setDropdownStyle] = useState({});
 
 	const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		const v = e.target.value;
@@ -49,6 +53,7 @@ export const SearchInput = <T,> ({
 
 		if (!onSearch || v.length < (minLength ?? 3)) {
 			setResults([]);
+			setOpen(false);
 			onResults?.([], loading);
 			return;
 		}
@@ -67,10 +72,12 @@ export const SearchInput = <T,> ({
 
 				if (id === requestRef.current) {
 					setResults(res ?? []);
+					setOpen(true);
 					onResults?.(res, false);
 				}
 			} catch {
 				setResults([]);
+				setOpen(false);
 				onResults?.([], false);
 			} finally {
 				setLoading(false);
@@ -78,10 +85,24 @@ export const SearchInput = <T,> ({
 		}, debounce);
 	}
 
+	const updatePosition = () => {
+		const rect = inputRef.current?.getBoundingClientRect();
+		if (rect) {
+			setDropdownStyle({
+				position: 'fixed',
+				top: rect.bottom + window.scrollY,
+				left: rect.left + window.scrollX,
+				width: rect.width,
+				zIndex: 9999,
+			});
+		}
+	};
+
 	useEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
 			if (containerRef.current?.contains(e.target as Node)) return;
 			setFocused?.(false);
+			setOpen(false);
 			setResults([]);
 		};
 
@@ -107,6 +128,7 @@ export const SearchInput = <T,> ({
 		>
 			<Icon icon={icon} />
 			<input
+				ref={inputRef}
 				type={type}
 				name={name}
 				id={id}
@@ -118,14 +140,15 @@ export const SearchInput = <T,> ({
 					setTouched?.(true);
 				}}
 				onFocus={() => {
+					updatePosition();
 					setFocused?.(true);
 				}}
 				readOnly={readOnly}
 				disabled={disabled}
 				aria-label={label || placeholder}
 			/>
-			{(renderMode === 'inline' && focused && value.length >= minLength) ? (
-				<div className="search-dropdown">
+			{(renderMode === 'inline' && open) ? createPortal(
+				<div className="search-dropdown" style={dropdownStyle}>
 					{loading
 						? <div className="search-dropdown__item loading">Zoeken...</div>
 						: results.length === 0
@@ -138,8 +161,8 @@ export const SearchInput = <T,> ({
 										className="search-dropdown__item"
 										onClick={() => {
 											onSelect?.(item);
-											//onChange(optionValue?.(item).toString() ?? '');
 											setResults([]);
+											setOpen(false);
 											setFocused?.(false);
 										}}
 									>
@@ -148,7 +171,7 @@ export const SearchInput = <T,> ({
 								))
 							)}
 				</div>
-			) : null}
+			, document.body) : null}
 		</InputWrapper>
 	);
 };
