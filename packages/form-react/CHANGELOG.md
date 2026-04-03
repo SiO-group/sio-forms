@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.11
+
+### Patch Changes
+
+- Fix: Loose focus on select item
+
 ## 0.7.10
 
 ### Patch Changes

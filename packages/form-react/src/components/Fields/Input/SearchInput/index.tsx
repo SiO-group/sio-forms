@@ -140,6 +140,7 @@ export const SearchInput = <T,> ({
 											onSelect?.(item);
 											//onChange(optionValue?.(item).toString() ?? '');
 											setResults([]);
+											setFocused?.(false);
 										}}
 									>
 										{optionLabel?.(item) ?? index}
