@@ -1,7 +1,7 @@
 import InputWrapper from "../../InputWrapper";
 import { SearchFieldProps } from "../../../../types";
 import { Icon } from "../../../Icon";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export const SearchInput = <T,> ({
 	value,

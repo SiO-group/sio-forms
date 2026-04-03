@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.5
+
+### Patch Changes
+
+- Bug: Fix for missing require
+
 ## 0.7.4
 
 ### Patch Changes
