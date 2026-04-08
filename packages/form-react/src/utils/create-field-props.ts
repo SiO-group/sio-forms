@@ -93,7 +93,7 @@ export const createFieldProps = (field: FieldState, setters: FieldSetters, disab
     };
   }
 
-  if (field.type === "select" || field.type === "creatable") {
+  if (field.type === "select" || field.type === "selectable" || field.type === "creatable") {
     return {
       ...baseProps,
       type: field.type,

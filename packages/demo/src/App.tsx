@@ -19,6 +19,30 @@ function App() {
       rows: 5,
       placeholder: 'Your message...'
     })
+    .addSelectable('lorem', {
+      label: 'multi select',
+      options:['1', '2', '3'],
+      multiple: true,
+      //required: true,
+    })
+    .addSelectable('ipsum', {
+      label: 'single select',
+      options:['1', '2', '3'],
+      multiple: false,
+      //required: true,
+    })
+    .addCreatable('dolor', {
+      label: 'multi create',
+      options:['1', '2', '3'],
+      multiple: true,
+      //required: true,
+    })
+    .addCreatable('sit', {
+      label: 'single create',
+      options:['1', '2', '3'],
+      multiple: false,
+      //required: true,
+    })
     .getFields();
 
   return (

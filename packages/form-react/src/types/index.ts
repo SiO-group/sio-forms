@@ -8,6 +8,7 @@ export type {
   DateFieldProps,
   UrlFieldProps,
   SelectFieldProps,
+  SelectableFieldProps,
   RadioFieldProps,
   SwitchFieldProps,
   SearchFieldProps,

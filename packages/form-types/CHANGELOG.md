@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.3
+
+### Patch Changes
+
+- Feat: add Creatable and Selectable
+
 ## 0.4.2
 
 ### Patch Changes

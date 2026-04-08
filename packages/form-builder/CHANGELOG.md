@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.4
+
+### Patch Changes
+
+- Feat: add Creatable and Selectable
+- Updated dependencies
+  - @sio-group/form-types@0.4.3
+
 ## 0.3.3
 
 ### Patch Changes

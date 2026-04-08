@@ -71,9 +71,16 @@ export type UrlFieldProps = BaseFieldProps & {
 };
 
 export type SelectFieldProps = BaseFieldProps & {
-  type: "select" | "creatable";
+  type: "select";
   options: SelectOption[];
   multiple: boolean;
+};
+
+export type SelectableFieldProps = BaseFieldProps & {
+  type: "select" | "selectable" | "creatable";
+  options: SelectOption[];
+  multiple: boolean;
+  portalTarget: string | HTMLElement;
 };
 
 export type RadioFieldProps = BaseFieldProps & {
@@ -108,7 +115,8 @@ export type FieldProps =
   | DateFieldProps
   | UrlFieldProps
   | SelectFieldProps
+  | SelectableFieldProps
   | RadioFieldProps
   | SwitchFieldProps
   | SearchFieldProps
-  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "creatable" | "radio" | "switch" | "search"> });
+  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "selectable" | "creatable" | "radio" | "switch" | "search"> });

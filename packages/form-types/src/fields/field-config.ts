@@ -117,8 +117,19 @@ export type RadioFieldConfig = Base<'radio'> & { options: string[] | Option[]; i
  * @see {@link Base} for common options
  */
 export type SelectFieldConfig =
-  | Base<'select'> & { options: SelectOption[]; multiple?: boolean; }
-  | Base<'creatable'> & { options: SelectOption[]; multiple?: boolean; };
+  | Base<'select'> & { options: SelectOption[]; multiple?: boolean; };
+
+/**
+ * Configuration for select and creatable input fields.
+ * Extends the base configuration with select-specific options.
+ *
+ * **Note:** `options` is required.
+ *
+ * @see {@link Base} for common options
+ */
+export type SelectableFieldConfig =
+  | Base<'selectable'> & { options: SelectOption[]; multiple?: boolean; portalTarget?: string | HTMLElement; }
+  | Base<'creatable'> & { options: SelectOption[]; multiple?: boolean; portalTarget?: string | HTMLElement; };
 
 /**
  * Configuration for number input fields.

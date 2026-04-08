@@ -2,9 +2,9 @@ import { ButtonContainerProps, FormConfig, FormContainerProps } from "../types/f
 import { FormField } from "@sio-group/form-types";
 import React, { useMemo, forwardRef, useImperativeHandle } from "react";
 import { useForm } from "../hooks/useForm";
-import { FormLayout, RadioFieldProps, SelectFieldProps, TextareaFieldProps, SwitchFieldProps } from "../types";
+import { FormLayout, RadioFieldProps, SelectFieldProps, SelectableFieldProps, TextareaFieldProps, SwitchFieldProps } from "../types";
 import { getColumnClasses } from "../utils/get-column-classes";
-import { Checkbox, Input, Radio, Select, Textarea, Switch } from "./Fields";
+import { Checkbox, Input, Radio, Select, Textarea, Switch, Selectable } from "./Fields";
 import { Link, Button } from "@sio-group/ui-core";
 import type { LinkProps, ButtonProps } from "@sio-group/ui-core";
 
@@ -62,7 +62,11 @@ export const Form = forwardRef(({
         return <Radio {...register(field.name, field, renderLayout) as RadioFieldProps} key={field.name} />;
 
       case 'select':
-        return <Select {...register(field.name, field, renderLayout) as SelectFieldProps} key={field.name} />
+        return <Select {...register(field.name, field, renderLayout) as SelectFieldProps} key={field.name} />;
+
+      case 'selectable':
+      case 'creatable':
+        return <Selectable {...register(field.name, field, renderLayout) as SelectableFieldProps} key={field.name} />;
 
       case 'text':
       case 'search':
@@ -78,10 +82,10 @@ export const Form = forwardRef(({
       case 'color':
       case 'file':
       case 'hidden':
+      default:
         return <Input {...register(field.name, field, renderLayout)} key={field.name} />;
 
-      default:
-        return <div key={field.name}>{field.type} to implement</div>;
+        //return <div key={field.name}>{field.type} to implement</div>;
     }
   };
 

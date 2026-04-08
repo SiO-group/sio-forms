@@ -9,4 +9,5 @@ export { TextInput } from './Input/TextInput';
 export * from './InputWrapper';
 export * from './Radio';
 export * from './Select';
+export * from './Selectable';
 export * from './Textarea';

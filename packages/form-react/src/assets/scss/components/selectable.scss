@@ -1,0 +1,110 @@
+.sio-select {
+  width: 100%;
+
+  .sio-select__control {
+    background-color: transparent;
+    border: none;
+    min-height: 1em;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    padding: var(--sio-form-padding-y) 0 var(--sio-form-padding-y) var(--sio-form-padding-x);
+
+    .sio-select__value-container--has-value {
+      font-weight: 400;
+    }
+
+    &:focus,
+    &.sio-select__control--is-focused {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    .sio-select__value-container {
+      max-height: 100px;
+      overflow: auto;
+      padding: 0;
+
+      div {
+        color: var(--sio-color-gray);
+      }
+
+      .sio-select__input-container {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+
+        input.sio-select__input {
+          color: var(--sio-color-gray);;
+
+          font-weight: 400 !important;
+          font-size: 1em !important;
+          width: auto !important;
+        }
+      }
+
+      .sio-select__placeholder {
+        color: var(--sio-color-light-gray);
+        font-weight: 200;
+        font-size: 1em;
+      }
+
+      .sio-select__multi-value {
+        color: var(--sio-color-gray);
+        background: var(--sio-form-bg);
+        font-size: large;
+        border-radius: var(--sio-form-border-radius);
+        border: 1px solid var(--sio-form-border);
+
+        .sio-select__multi-value__label {
+          color: var(--sio-color-gray);
+          padding: 0 5px;
+        }
+        .sio-select__multi-value__remove {
+          color: var(--sio-color-primary);
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  &__indicators {
+    .sio-select__indicator-separator {
+      margin: 0;
+    }
+
+    .sio-select__indicator.sio-select__dropdown-indicator {
+      padding: 0 5px;
+    }
+
+
+    .sio-select__clear-indicator {
+      padding: 0 5px;
+    }
+  }
+
+  .form-field__content {
+    width: 100%;
+  }
+}
+
+.sio-select__menu-portal,
+.sio-select__menu {
+  font-size: 1em;
+  font-weight: 400;
+
+  color: var(--sio-color-gray);
+  border-color: var(--sio-form-border);
+  background-color: var(--sio-form-bg);
+
+  .sio-select__option--is-focused {
+    background-color: var(--sio-color-light-gray);
+  }
+
+  .sio-select__option--is-selected {
+    background-color: var(--sio-color-primary);
+    color: var(--sio-color-white);
+  }
+}

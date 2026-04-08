@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.16
+
+### Patch Changes
+
+- Feat: add Creatable and Selectable
+- Updated dependencies
+  - @sio-group/form-types@0.4.3
+  - @sio-group/form-validation@0.1.9
+
 ## 0.7.15
 
 ### Patch Changes

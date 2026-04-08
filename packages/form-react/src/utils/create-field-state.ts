@@ -36,6 +36,7 @@ function getDefaultValue<T extends keyof FieldConfigMap> (config: FormField): Fi
     case "range":
       return config.config.min ?? 0;
     case "select":
+    case "selectable":
     case "creatable":
       return null;
     case "file":

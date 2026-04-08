@@ -17,6 +17,7 @@ export type FieldConfigMap = {
   switch: SwitchFieldConfig;
   radio: RadioFieldConfig;
   select: SelectFieldConfig;
+  selectable: SelectFieldConfig;
   creatable: SelectFieldConfig;
   tel: TelephoneFieldConfig;
   password: PasswordFieldConfig;

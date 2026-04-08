@@ -9,7 +9,7 @@ export type ValueType<T extends keyof FieldConfigMap> =
     ? boolean
     : T extends 'number' | 'range'
       ? number
-      : T extends 'select' | 'creatable'
+      : T extends 'select' | 'selectable' | 'creatable'
         ? Option | Option[]
         : T extends 'file'
           ? unknown
