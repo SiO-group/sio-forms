@@ -89,6 +89,12 @@ export type RadioFieldProps = BaseFieldProps & {
   inline: boolean;
 };
 
+export type CheckboxGroupFieldProps = BaseFieldProps & {
+  type: "checkbox-group";
+  options: string[] | Option[];
+  inline: boolean;
+};
+
 export type SwitchFieldProps = BaseFieldProps & {
   type: "switch";
   onToggle: (value: boolean) => void;
@@ -117,6 +123,7 @@ export type FieldProps =
   | SelectFieldProps
   | SelectableFieldProps
   | RadioFieldProps
+  | CheckboxGroupFieldProps
   | SwitchFieldProps
   | SearchFieldProps
-  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "selectable" | "creatable" | "radio" | "switch" | "search"> });
+  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "selectable" | "creatable" | "radio" | "checkbox-group" | "switch" | "search"> });

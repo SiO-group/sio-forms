@@ -40,6 +40,7 @@ function getDefaultValue<T extends keyof FieldConfigMap> (config: FormField): Fi
     case "creatable":
       return null;
     case "file":
+    case "checkbox-group":
       return [];
     case "color":
       return "#000000";

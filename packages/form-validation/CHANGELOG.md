@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies
+  - @sio-group/form-types@0.4.4
+
 ## 0.1.9
 
 ### Patch Changes

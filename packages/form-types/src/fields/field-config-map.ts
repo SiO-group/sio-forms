@@ -1,5 +1,5 @@
 import {
-  CheckboxFieldConfig, ColorFieldConfig, DateFieldConfig,
+  CheckboxFieldConfig, CheckboxGroupFieldConfig, ColorFieldConfig, DateFieldConfig,
   EmailFieldConfig, SwitchFieldConfig,
   FileFieldConfig, HiddenFieldConfig, NumberFieldConfig, PasswordFieldConfig, RadioFieldConfig, RangeFieldConfig,
   SearchFieldConfig, SelectFieldConfig, TelephoneFieldConfig,
@@ -14,6 +14,7 @@ export type FieldConfigMap = {
   textarea: TextareaFieldConfig;
   email: EmailFieldConfig;
   checkbox: CheckboxFieldConfig;
+  'checkbox-group': CheckboxGroupFieldConfig;
   switch: SwitchFieldConfig;
   radio: RadioFieldConfig;
   select: SelectFieldConfig;

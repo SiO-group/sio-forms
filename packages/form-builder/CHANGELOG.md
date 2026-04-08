@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.5
+
+### Patch Changes
+
+- Feat: Add Checkbox Group
+- Updated dependencies
+  - @sio-group/form-types@0.4.4
+
 ## 0.3.4
 
 ### Patch Changes

@@ -11,6 +11,8 @@ export type ValueType<T extends keyof FieldConfigMap> =
       ? number
       : T extends 'select' | 'selectable' | 'creatable'
         ? Option | Option[]
-        : T extends 'file'
-          ? unknown
-          : string;
+        : T extends 'checkbox-group'
+          ? string[]
+          : T extends 'file'
+            ? unknown
+            : string;

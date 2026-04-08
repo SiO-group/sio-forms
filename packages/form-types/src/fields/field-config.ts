@@ -54,6 +54,13 @@ export type EmailFieldConfig = Base<'email'>;
 export type CheckboxFieldConfig = Base<'checkbox'>;
 
 /**
+ * Configuration for checkbox group.
+ *
+ * @see {@link Base} for common options
+ */
+export type CheckboxGroupFieldConfig = Base<'checkbox-group'> & { options: string[] | Option[]; inline?: boolean };
+
+/**
  * Configuration for switch input fields.
  *
  * @see {@link Base} for common options
