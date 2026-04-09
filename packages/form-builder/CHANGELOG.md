@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.7
+
+### Patch Changes
+
+- Fix: bundle react-select error
+
 ## 0.3.6
 
 ### Patch Changes

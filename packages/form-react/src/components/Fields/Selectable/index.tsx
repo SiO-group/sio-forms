@@ -63,9 +63,10 @@ export const Selectable = ({
 
   const target = useMemo(() => {
     if (typeof portalTarget === "string") {
-      return document.querySelector(portalTarget) ?? document.body;
+      const el = document.querySelector(portalTarget);
+      return el instanceof HTMLElement ? el : document.body;
     }
-    return portalTarget ?? document.body;
+    return portalTarget instanceof HTMLElement ? portalTarget : document.body;
   }, [portalTarget]);
 
   return (

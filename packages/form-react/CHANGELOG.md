@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.22
+
+### Patch Changes
+
+- Fix: bundle react-select error
+- Updated dependencies
+  - @sio-group/form-validation@0.1.12
+
 ## 0.7.21
 
 ### Patch Changes

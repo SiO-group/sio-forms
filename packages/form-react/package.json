@@ -1,6 +1,6 @@
 {
   "name": "@sio-group/form-react",
-  "version": "0.7.21",
+  "version": "0.7.22",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -28,7 +28,7 @@
   "description": "",
   "dependencies": {
     "@sio-group/form-types": "0.4.5",
-    "@sio-group/form-validation": "0.1.11",
+    "@sio-group/form-validation": "0.1.12",
     "@sio-group/ui-core": "~0.4.3"
   },
   "peerDependencies": {

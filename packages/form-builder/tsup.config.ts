@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/form-schema.ts"],
+  entry: ["src/index.ts"],
   format: ["esm", "cjs"],
   dts: true,
   clean: true
