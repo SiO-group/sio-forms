@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.23
+
+### Patch Changes
+
+- Fix: add where-selector around Selectable classes
+
 ## 0.7.22
 
 ### Patch Changes
