@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.20
+
+### Patch Changes
+
+- Bug: Fix Selectable error
+
 ## 0.7.19
 
 ### Patch Changes

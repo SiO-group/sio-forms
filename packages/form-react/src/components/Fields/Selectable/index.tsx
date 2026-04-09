@@ -1,9 +1,12 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { SelectOption, OptionGroup, Option } from "@sio-group/form-types";
 import { SelectableFieldProps } from "../../../types/field-props";
 import InputWrapper from "../InputWrapper";
 import { Icon } from "../../Icon";
 import type { ActionMeta } from 'react-select';
+
+let cachedSelect: React.ComponentType<any> | null = null;
+let cachedCreatable: React.ComponentType<any> | null = null;
 
 export const Selectable = ({
     value,
@@ -33,8 +36,7 @@ export const Selectable = ({
     className,
     style,
 }: SelectableFieldProps) => {
-  const selectRef = useRef<React.ComponentType<any> | null>(null);
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(type === 'creatable' ? !!cachedCreatable : !!cachedSelect);
 
   const [opt, setOpt] = useState<(Option | OptionGroup)[]>(
     options.map((x: SelectOption) =>
@@ -47,18 +49,20 @@ export const Selectable = ({
 
     const load = async () => {
       try {
-        if (type === 'creatable') {
+        if (type === 'creatable' && !cachedCreatable) {
           const mod = await import('react-select/creatable');
           if (!cancelled) {
-            selectRef.current = mod.default;
+            cachedCreatable = mod.default;
             setReady(true);
           }
-        } else if (type === 'selectable') {
+        } else if (type === 'selectable' && !cachedSelect) {
           const mod = await import('react-select');
           if (!cancelled) {
-            selectRef.current = mod.default;
+            cachedSelect = mod.default;
             setReady(true);
           }
+        } else {
+          if (!cancelled) setReady(true);
         }
       } catch {
         if (!cancelled) setReady(false);
@@ -94,9 +98,9 @@ export const Selectable = ({
     return portalTarget ?? document.body;
   }, [portalTarget]);
 
-  if (!ready || !selectRef.current) return null;
+  if (!ready) return null;
 
-  const SelectComponent = selectRef.current;
+  const SelectComponent = type === 'creatable' ? cachedCreatable! : cachedSelect!;
 
   return (
     <InputWrapper

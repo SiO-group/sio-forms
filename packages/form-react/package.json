@@ -1,6 +1,6 @@
 {
   "name": "@sio-group/form-react",
-  "version": "0.7.19",
+  "version": "0.7.20",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",

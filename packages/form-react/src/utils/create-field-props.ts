@@ -93,12 +93,22 @@ export const createFieldProps = (field: FieldState, setters: FieldSetters, disab
     };
   }
 
-  if (field.type === "select" || field.type === "selectable" || field.type === "creatable") {
+  if (field.type === "select") {
     return {
       ...baseProps,
       type: field.type,
       options: field.options || [],
       multiple: field.multiple,
+    };
+  }
+
+  if (field.type === "selectable" || field.type === "creatable") {
+    return {
+      ...baseProps,
+      type: field.type,
+      options: field.options || [],
+      multiple: field.multiple,
+      portalTarget: field.portalTarget
     };
   }
 
