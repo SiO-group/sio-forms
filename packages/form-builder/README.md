@@ -150,9 +150,11 @@ builder.addDate('birthdate', {
 
 ```javascript
 addSelect(name, config)
+addSelectable(name, config)
 addCreatable(name, config)
 addRadio(name, config)
 addCheckbox(name, config)
+addCheckboxGroup(name, config)
 addSwitch(name, config)
 ```
 
@@ -229,11 +231,13 @@ interface Base<T extends InputTypes> {
 ### Required Configuration
 Some field types **require** additional configuration:
 
-| Field Type       | Required Properties                     |
-|------------------|-----------------------------------------|
-| `addSelect()`    | `options` (array of strings or objects) |
-| `addCreatable()` | `options` (array of strings or objects) |
-| `addRadio()`     | `options` (array of strings or objects) |
+| Field Type           | Required Properties                     |
+|----------------------|-----------------------------------------|
+| `addCheckboxGroup()` | `options` (array of strings or objects) |
+| `addSelect()`        | `options` (array of strings or objects) |
+| `addSelectable()`    | `options` (array of strings or objects) |
+| `addCreatable()`     | `options` (array of strings or objects) |
+| `addRadio()`         | `options` (array of strings or objects) |
 
 Example
 ```javascript

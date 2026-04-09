@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.5
+
+### Patch Changes
+
+- Doc: updated readme
+
 ## 0.4.4
 
 ### Patch Changes

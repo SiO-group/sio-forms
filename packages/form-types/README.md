@@ -99,39 +99,40 @@ type ColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
 The `ValueType<T>` type maps each input type to its JavaScript type:
 
-| Input Type                             | Value Type            |
-|----------------------------------------|-----------------------|
-| `'text'`, `'email'`, `'url'`, etc.     | `string`              |
-| `'number'`, `'range'`                  | `number`              |
-| `'checkbox'`                           | `boolean`             |
-| `'switch'`                             | `boolean`             |
-| `'file'`                               | `unknown`             |
-| `'select'`, `'creatable'`              | `Option \| Option[]`  |
-| `'radio'`                              | `string` (via config) |
-| `'date'`, `'time'`, `'datetime-local'` | `string`              |
+| Input Type                                                    | Value Type            |
+|---------------------------------------------------------------|-----------------------|
+| `'text'`, `'email'`, `'url'`, etc.                            | `string`              |
+| `'number'`, `'range'`                                         | `number`              |
+| `'checkbox'`                                                  | `boolean`             |
+| `'switch'`                                                    | `boolean`             |
+| `'file'`                                                      | `unknown`             |
+| `'checkbox-group'`, `'select'`, `'selectable'`, `'creatable'` | `Option \| Option[]`  |
+| `'radio'`                                                     | `string` (via config) |
+| `'date'`, `'time'`, `'datetime-local'`                        | `string`              |
 
 ### Field Configuration Types
 
-| Type                   | Description                            | Extra Properties                                                                                          |
-|------------------------|----------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| `Base<T>`              | Base configuration for all field types | -                                                                                                         |
-| `TextFieldConfig`      | Text input configuration               | `pattern?: RegExp`                                                                                        |
-| `SearchFieldConfig`    | Search input configuration             | `onSearch`, `optionLabel`, `optionValue`, `renderMode`, `debounce`, `minLength`, `onResults`, `onSelect`  |
-| `EmailFieldConfig`     | Email input configuration              | -                                                                                                         |
-| `TelephoneFieldConfig` | Telephone input configuration          | `pattern?: RegExp`                                                                                        |
-| `PasswordFieldConfig`  | Password input configuration           | -                                                                                                         |
-| `UrlFieldConfig`       | URL input configuration                | `allowLocalhost?`, `allowFtp?`, `secureOnly?`, `pattern?: RegExp`                                         |
-| `NumberFieldConfig`    | Number input configuration             | `min?`, `max?`, `step?`                                                                                   |
-| `RangeFieldConfig`     | Range input configuration              | `min?`, `max?`, `step?`                                                                                   |
-| `TextareaFieldConfig`  | Textarea configuration                 | `rows?`, `cols?`                                                                                          |
-| `DateFieldConfig`      | Date/time input configuration          | `min?`, `max?`, `step?`                                                                                   |
-| `ColorFieldConfig`     | Color input configuration              | -                                                                                                         |
-| `FileFieldConfig`      | File input configuration               | `accept?`, `filesize?`, `multiple?`, `capture?`                                                           |
-| `CheckboxFieldConfig`  | Checkbox configuration                 | -                                                                                                         |
-| `SwitchFieldConfig`    | Switch configuration                   | `onToggle?: (value: boolean) => void`                                                                     |
-| `RadioFieldConfig`     | Radio button configuration             | **`options: string[] \| Option[]`** (required)                                                            |
-| `SelectFieldConfig`    | Select dropdown configuration          | **`options: string[] \| Option[]`** (required), `multiple?`                                               |
-| `HiddenFieldConfig`    | Hidden input configuration             | -                                                                                                         |
+| Type                       | Description                            | Extra Properties                                                                                         |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `Base<T>`                  | Base configuration for all field types | -                                                                                                        |
+| `TextFieldConfig`          | Text input configuration               | `pattern?: RegExp`                                                                                       |
+| `SearchFieldConfig`        | Search input configuration             | `onSearch`, `optionLabel`, `optionValue`, `renderMode`, `debounce`, `minLength`, `onResults`, `onSelect` |
+| `EmailFieldConfig`         | Email input configuration              | -                                                                                                        |
+| `TelephoneFieldConfig`     | Telephone input configuration          | `pattern?: RegExp`                                                                                       |
+| `PasswordFieldConfig`      | Password input configuration           | -                                                                                                        |
+| `UrlFieldConfig`           | URL input configuration                | `allowLocalhost?`, `allowFtp?`, `secureOnly?`, `pattern?: RegExp`                                        |
+| `NumberFieldConfig`        | Number input configuration             | `min?`, `max?`, `step?`                                                                                  |
+| `RangeFieldConfig`         | Range input configuration              | `min?`, `max?`, `step?`                                                                                  |
+| `TextareaFieldConfig`      | Textarea configuration                 | `rows?`, `cols?`                                                                                         |
+| `DateFieldConfig`          | Date/time input configuration          | `min?`, `max?`, `step?`                                                                                  |
+| `ColorFieldConfig`         | Color input configuration              | -                                                                                                        |
+| `FileFieldConfig`          | File input configuration               | `accept?`, `filesize?`, `multiple?`, `capture?`                                                          |
+| `CheckboxFieldConfig`      | Checkbox configuration                 | -                                                                                                        |
+| `CheckboxGroupFieldConfig` | Checkbox group configuration           | **`options: string[] \| Option[]`** (required)                                                                                                         |
+| `SwitchFieldConfig`        | Switch configuration                   | `onToggle?: (value: boolean) => void`                                                                    |
+| `RadioFieldConfig`         | Radio button configuration             | **`options: string[] \| Option[]`** (required)                                                           |
+| `SelectFieldConfig`        | Select dropdown configuration          | **`options: string[] \| Option[]`** (required), `multiple?`                                              |
+| `HiddenFieldConfig`        | Hidden input configuration             | -                                                                                                        |
 
 ## Base Configuration Interface
 
@@ -221,10 +222,12 @@ type FieldConfigMap = {
   textarea: TextareaFieldConfig;
   email: EmailFieldConfig;
   checkbox: CheckboxFieldConfig;
+  'checkbox-group': CheckboxGroupFieldConfig;
   switch: SwitchFieldConfig;
   radio: RadioFieldConfig;
   select: SelectFieldConfig;
-  creatable: SelectFieldConfig;
+  selectable: SelectableFieldConfig;
+  creatable: SelectableFieldConfig;
   tel: TelephoneFieldConfig;
   password: PasswordFieldConfig;
   hidden: HiddenFieldConfig;
