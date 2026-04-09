@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.21
+
+### Patch Changes
+
+- Fix: remove lazy loading
+- Doc: updated readme
+
 ## 0.7.20
 
 ### Patch Changes

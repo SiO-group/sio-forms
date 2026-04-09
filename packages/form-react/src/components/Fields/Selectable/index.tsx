@@ -4,9 +4,8 @@ import { SelectableFieldProps } from "../../../types/field-props";
 import InputWrapper from "../InputWrapper";
 import { Icon } from "../../Icon";
 import type { ActionMeta } from 'react-select';
-
-let cachedSelect: React.ComponentType<any> | null = null;
-let cachedCreatable: React.ComponentType<any> | null = null;
+import Select from 'react-select';
+import Creatable from 'react-select/creatable';
 
 export const Selectable = ({
     value,
@@ -36,42 +35,13 @@ export const Selectable = ({
     className,
     style,
 }: SelectableFieldProps) => {
-  const [ready, setReady] = useState(type === 'creatable' ? !!cachedCreatable : !!cachedSelect);
+  const SelectComponent = type === 'creatable' ? Creatable : Select;
 
   const [opt, setOpt] = useState<(Option | OptionGroup)[]>(
     options.map((x: SelectOption) =>
       typeof x === 'string' ? { value: x, label: x } as Option : x
     ),
   );
-
-  useEffect(() => {
-    let cancelled = false;
-
-    const load = async () => {
-      try {
-        if (type === 'creatable' && !cachedCreatable) {
-          const mod = await import('react-select/creatable');
-          if (!cancelled) {
-            cachedCreatable = mod.default;
-            setReady(true);
-          }
-        } else if (type === 'selectable' && !cachedSelect) {
-          const mod = await import('react-select');
-          if (!cancelled) {
-            cachedSelect = mod.default;
-            setReady(true);
-          }
-        } else {
-          if (!cancelled) setReady(true);
-        }
-      } catch {
-        if (!cancelled) setReady(false);
-      }
-    };
-
-    load();
-    return () => { cancelled = true; };
-  }, [type]);
 
   useEffect(() => {
     if (opt.length === 0 && options.length) {
@@ -97,10 +67,6 @@ export const Selectable = ({
     }
     return portalTarget ?? document.body;
   }, [portalTarget]);
-
-  if (!ready) return null;
-
-  const SelectComponent = type === 'creatable' ? cachedCreatable! : cachedSelect!;
 
   return (
     <InputWrapper

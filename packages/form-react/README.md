@@ -549,7 +549,7 @@ The component does not:
 
 An enhanced select component powered by [react-select](https://react-select.com). Supports option groups, multi-select, clearable values, and portal rendering for use inside modals.
 
-> **Note:** `react-select` is an optional peer dependency. The component renders nothing if it is not installed.
+> **Note:** `react-select` is an optional peer dependency. The component fails if it is not installed.
 
 **Installation:**
 
@@ -622,7 +622,7 @@ const fields = formBuilder()
 
 Extends `Selectable` with the ability to create new options on the fly. The user can type a value that does not exist in the list and confirm it — it is added to the options and immediately selected.
 
-> **Note:** `react-select` is an optional peer dependency. The component renders nothing if it is not installed.
+> **Note:** `react-select` is an optional peer dependency. The component fails if it is not installed.
 
 **Installation:**
 
