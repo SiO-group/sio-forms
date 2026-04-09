@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.7.19
+
+### Patch Changes
+
+- Bug: Fix error in Selectable
+
+## 0.7.18
+
+### Patch Changes
+
+- Updated dependencies
+  - @sio-group/form-types@0.4.5
+  - @sio-group/form-validation@0.1.11
+
 ## 0.7.17
 
 ### Patch Changes

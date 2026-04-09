@@ -1,4 +1,4 @@
-import {useState, useEffect, useMemo} from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { SelectOption, OptionGroup, Option } from "@sio-group/form-types";
 import { SelectableFieldProps } from "../../../types/field-props";
 import InputWrapper from "../InputWrapper";
@@ -6,58 +6,77 @@ import { Icon } from "../../Icon";
 import type { ActionMeta } from 'react-select';
 
 export const Selectable = ({
-  value,
-  onChange,
+    value,
+    onChange,
 
-  options,
-  multiple,
-  portalTarget = '#modal-root',
+    options,
+    multiple,
+    portalTarget = '#modal-root',
 
-  name,
-  id,
-  placeholder,
-  label,
-  required,
-  autocomplete,
-  setTouched,
-  setFocused,
-  readOnly,
-  disabled,
-  icon,
+    name,
+    id,
+    placeholder,
+    label,
+    required,
+    autocomplete,
+    setTouched,
+    setFocused,
+    readOnly,
+    disabled,
+    icon,
 
-  description,
-  focused,
-  errors,
-  touched,
-  type,
-  className,
-  style,
+    description,
+    focused,
+    errors,
+    touched,
+    type,
+    className,
+    style,
 }: SelectableFieldProps) => {
-  const [SelectComponent, setSelectComponent] = useState<any>(null);
+  const selectRef = useRef<React.ComponentType<any> | null>(null);
+  const [ready, setReady] = useState(false);
 
   const [opt, setOpt] = useState<(Option | OptionGroup)[]>(
-    options.map((x: SelectOption) => (typeof x === 'string' ? { value: x, label: x } as Option : x)),
+    options.map((x: SelectOption) =>
+      typeof x === 'string' ? { value: x, label: x } as Option : x
+    ),
   );
 
   useEffect(() => {
-    if (type === 'creatable') {
-      import('react-select/creatable')
-        .then((mod) => setSelectComponent(mod.default))
-        .catch(() => setSelectComponent(null))
-    } else if (type === 'selectable') {
-      import('react-select')
-        .then((mod) => setSelectComponent(mod.default))
-        .catch(() => setSelectComponent(null))
-    }
+    let cancelled = false;
+
+    const load = async () => {
+      try {
+        if (type === 'creatable') {
+          const mod = await import('react-select/creatable');
+          if (!cancelled) {
+            selectRef.current = mod.default;
+            setReady(true);
+          }
+        } else if (type === 'selectable') {
+          const mod = await import('react-select');
+          if (!cancelled) {
+            selectRef.current = mod.default;
+            setReady(true);
+          }
+        }
+      } catch {
+        if (!cancelled) setReady(false);
+      }
+    };
+
+    load();
+    return () => { cancelled = true; };
   }, [type]);
 
   useEffect(() => {
-    if (opt.length === 0 && options.length)
+    if (opt.length === 0 && options.length) {
       setOpt(
         options.map((x: SelectOption) =>
           typeof x === 'string' ? { value: x, label: x } : x,
         ),
       );
+    }
   }, [options, opt]);
 
   function isOptionGroup(o: SelectOption): o is OptionGroup {
@@ -72,11 +91,12 @@ export const Selectable = ({
     if (typeof portalTarget === "string") {
       return document.querySelector(portalTarget) ?? document.body;
     }
-
     return portalTarget ?? document.body;
   }, [portalTarget]);
 
-  if (!SelectComponent) return;
+  if (!ready || !selectRef.current) return null;
+
+  const SelectComponent = selectRef.current;
 
   return (
     <InputWrapper
@@ -102,27 +122,28 @@ export const Selectable = ({
         isMulti={multiple}
         closeMenuOnSelect={!multiple}
         isClearable={!required}
-        value={multiple
-          ? opt
+        value={
+          multiple
+            ? opt
+              .flatMap((item: Option | OptionGroup) => {
+                if (isOptionGroup(item)) return item.options;
+                if (isOption(item)) return item;
+                return item;
+              })
+              .filter(option => {
+                if (isOption(option)) return (value as any[])?.includes(option.value);
+                return false;
+              })
+            : opt
             .flatMap((item: Option | OptionGroup) => {
               if (isOptionGroup(item)) return item.options;
               if (isOption(item)) return item;
-              return item
-            })
-            .filter(option => {
-              if (isOption(option)) return (value as any[])?.includes(option.value);
-              return;
-            })
-          : opt
-            .flatMap((item: Option | OptionGroup) => {
-              if (isOptionGroup(item)) return item.options;
-              if (isOption(item)) return item;
-              return item
+              return item;
             })
             .find(option => {
-              if (isOption(option)) option.value === (value as any)
-              return;
-            })
+              if (isOption(option)) return option.value === (value as any);
+              return false;
+            }) ?? null
         }
         onChange={(option: any, actionMeta: ActionMeta<any>) => {
           if (actionMeta.action === 'clear') {
@@ -132,32 +153,20 @@ export const Selectable = ({
 
           if (multiple) {
             onChange(
-              option.map((option: any) => {
-                if (option.__isNew__) {
-                  setOpt([
-                    ...opt,
-                    {
-                      label: option.label,
-                      value: option.value,
-                    },
-                  ]);
+              option.map((o: any) => {
+                if (o.__isNew__) {
+                  setOpt(prev => [...prev, { label: o.label, value: o.value }]);
                 }
-
-                return option.value;
+                return o.value;
               }),
             );
           } else {
             if (option.__isNew__) {
-              setOpt([
-                ...opt,
-                { label: option.label, value: option.value },
-              ]);
+              setOpt(prev => [...prev, { label: option.label, value: option.value }]);
             }
-
             onChange(option.value);
           }
         }}
-
         onBlur={() => {
           setTouched?.(true);
           setFocused?.(false);
@@ -168,14 +177,11 @@ export const Selectable = ({
         placeholder={placeholder}
         isDisabled={disabled}
         styles={{
-          menuPortal: (base: any) => ({
-            ...base,
-            zIndex: 9999999,
-          }),
+          menuPortal: (base: any) => ({ ...base, zIndex: 9999999 }),
         }}
         menuPortalTarget={target}
         menuPosition='absolute'
       />
     </InputWrapper>
-  )
-}
+  );
+};

@@ -110,7 +110,7 @@ import { Form } from '@sio-group/form-react';
 You can also use field components independently:
 
 ```tsx
-import { 
+import {
   useForm,
   Input,
   Textarea,
@@ -122,7 +122,7 @@ import {
   RangeInput,
   DateInput,
   FileInput,
-  TextInput 
+  TextInput,
 } from '@sio-group/form-react';
 
 // Use with useForm hook
@@ -139,25 +139,25 @@ return (
 
 ### Form Props
 
-| Prop                 | Type                           | Default                  | Description                                     |
-|----------------------|--------------------------------|--------------------------|-------------------------------------------------|
-| `fields`             | `FormField[]`                  | (required)               | Array of form fields                            |
-| `submitAction`       | `(values: any) => void`        | (required)               | Submit handler                                  |
-| `layout`             | `FormLayout[]`                 | `[]`                     | Custom layout configuration                     |
-| `submitShow`         | `boolean`                      | `true`                   | Show submit button                              |
-| `submitLabel`        | `string`                       | `'Bewaar'`               | Submit button text                              |
-| `submitOnlyDirty`    | `boolean`                      | `false`                  | Disable submit button when the form is not dity |
-| `cancelShow`         | `boolean`                      | `false`                  | Show cancel button                              |
-| `cancelLabel`        | `string`                       | `'Annuleren'`            | Cancel button text                              |
-| `cancelAction`       | `() => void`                   | -                        | Cancel handler                                  |
-| `cancelOnlyDirty`    | `boolean`                      | `false`                  | Show cancel button only when form is dirty      |
-| `buttons`            | `(ButtonProps \| LinkProps)[]` | `[]`                     | Additional buttons                              |
-| `extraValidation`    | `(values: any) => boolean`     | `() => true`             | Extra validation                                |
-| `className`          | `string`                       | -                        | CSS class for form container                    |
-| `style`              | `React.CSSProperties`          | -                        | Inline styles                                   |
-| `disableWhenOffline` | `boolean`                      | `true`                   | Disable form when offline                       |
-| `container`          | `React.ComponentType`          | `DefaultContainer`       | Custom form container                           |
-| `buttonContainer`    | `React.ComponentType`          | `DefaultButtonContainer` | Custom button container                         |
+| Prop                 | Type                           | Default                  | Description                                       |
+|----------------------|--------------------------------|--------------------------|---------------------------------------------------|
+| `fields`             | `FormField[]`                  | (required)               | Array of form fields                              |
+| `submitAction`       | `(values: any) => void`        | (required)               | Submit handler                                    |
+| `layout`             | `FormLayout[]`                 | `[]`                     | Custom layout configuration                       |
+| `submitShow`         | `boolean`                      | `true`                   | Show submit button                                |
+| `submitLabel`        | `string`                       | `'Bewaar'`               | Submit button text                                |
+| `submitOnlyDirty`    | `boolean`                      | `false`                  | Disable submit button when the form is not dirty  |
+| `cancelShow`         | `boolean`                      | `false`                  | Show cancel button                                |
+| `cancelLabel`        | `string`                       | `'Annuleren'`            | Cancel button text                                |
+| `cancelAction`       | `() => void`                   | -                        | Cancel handler                                    |
+| `cancelOnlyDirty`    | `boolean`                      | `false`                  | Show cancel button only when form is dirty        |
+| `buttons`            | `(ButtonProps \| LinkProps)[]` | `[]`                     | Additional buttons                                |
+| `extraValidation`    | `(values: any) => boolean`     | `() => true`             | Extra validation                                  |
+| `className`          | `string`                       | -                        | CSS class for form container                      |
+| `style`              | `React.CSSProperties`          | -                        | Inline styles                                     |
+| `disableWhenOffline` | `boolean`                      | `true`                   | Disable form when offline                         |
+| `container`          | `React.ComponentType`          | `DefaultContainer`       | Custom form container                             |
+| `buttonContainer`    | `React.ComponentType`          | `DefaultButtonContainer` | Custom button container                           |
 
 ### Layout Configuration
 
@@ -545,6 +545,137 @@ The component does not:
 ![Select](screenshots/select-field.png)
 *Single select input*
 
+#### Selectable
+
+An enhanced select component powered by [react-select](https://react-select.com). Supports option groups, multi-select, clearable values, and portal rendering for use inside modals.
+
+> **Note:** `react-select` is an optional peer dependency. The component renders nothing if it is not installed.
+
+**Installation:**
+
+```bash
+npm install react-select
+```
+
+```tsx
+<Selectable
+  {...register('country', {
+    name: 'country',
+    type: 'selectable',
+    config: {
+      label: 'Country',
+      options: [
+        { value: 'be', label: 'Belgium' },
+        { value: 'nl', label: 'Netherlands' },
+        {
+          label: 'Europe',
+          options: [
+            { value: 'fr', label: 'France' }
+          ]
+        }
+      ],
+      multiple: false,
+      placeholder: 'Choose a country',
+    }
+  }) as SelectableFieldProps}
+/>
+```
+
+Multi-select:
+
+```
+config: {
+  label: 'Languages',
+  options: ['Dutch', 'French', 'English'],
+  multiple: true,
+}
+```
+
+By default the dropdown menu is rendered in a portal attached to `#modal-root`. Override this via `portalTarget`:
+
+```
+config: {
+  portalTarget: '#my-portal',   // CSS selector
+  // or pass an HTMLElement directly
+  portalTarget: document.body,
+}
+```
+
+With the form builder:
+
+```tsx
+const fields = formBuilder()
+  .addSelectable('country', {
+    label: 'Country',
+    options: [
+      { value: 'be', label: 'Belgium' },
+      { value: 'nl', label: 'Netherlands' },
+    ],
+  })
+  .getFields();
+```
+
+![Selectable](screenshots/selectable-field.png)
+*Enhanced select with option groups*
+
+#### Creatable
+
+Extends `Selectable` with the ability to create new options on the fly. The user can type a value that does not exist in the list and confirm it — it is added to the options and immediately selected.
+
+> **Note:** `react-select` is an optional peer dependency. The component renders nothing if it is not installed.
+
+**Installation:**
+
+```bash
+npm install react-select
+```
+
+```tsx
+<Selectable
+  {...register('tags', {
+    name: 'tags',
+    type: 'creatable',
+    config: {
+      label: 'Tags',
+      options: [
+        { value: 'react', label: 'React' },
+        { value: 'typescript', label: 'TypeScript' },
+      ],
+      multiple: true,
+      placeholder: 'Select or create a tag...',
+    }
+  }) as SelectableFieldProps}
+/>
+```
+
+Newly created options are added to the local option list for the lifetime of the component. They are not persisted externally — handle persistence in your `submitAction` or `onChange` if needed.
+
+With the form builder:
+
+```tsx
+const fields = formBuilder()
+  .addCreatable('tags', {
+    label: 'Tags',
+    options: ['React', 'TypeScript', 'Node.js'],
+    multiple: true,
+  })
+  .getFields();
+```
+
+![Creatable](screenshots/creatable-field.png)
+*Creatable select with multi-value*
+
+**Selectable vs Creatable vs Select at a glance:**
+
+| Feature              | `select`  | `selectable`    | `creatable`     |
+|----------------------|-----------|-----------------|-----------------|
+| Native HTML element  | ✅         | ❌               | ❌               |
+| Option groups        | ✅         | ✅               | ✅               |
+| Multi-select         | ✅         | ✅               | ✅               |
+| Searchable           | ❌         | ✅               | ✅               |
+| Create new options   | ❌         | ❌               | ✅               |
+| Extra dependency     | ❌         | `react-select`  | `react-select`  |
+
 #### Radio
 
 ```tsx
@@ -594,6 +725,60 @@ const fields = formBuilder()
 
 ![Checkbox](screenshots/checkbox-field.png)
 *Checkbox input*
+
+#### CheckboxGroup
+
+A group of checkboxes for multi-value selection. Each option is independently toggleable and the result is an array of selected values.
+
+```tsx
+<CheckboxGroup
+  {...register('interests', {
+    name: 'interests',
+    type: 'checkbox-group',
+    config: {
+      label: 'Interests',
+      options: [
+        { value: 'sports', label: 'Sports' },
+        { value: 'music', label: 'Music' },
+        { value: 'tech', label: 'Technology' },
+      ],
+      inline: true,
+    }
+  }) as CheckboxGroupFieldProps}
+/>
+```
+
+Options can also be plain strings:
+
+```tsx
+options: ['Red', 'Green', 'Blue']
+```
+
+Individual options can be hidden or disabled without removing them from the list:
+
+```tsx
+options: [
+  { value: 'admin', label: 'Admin', hide: true },     // never rendered
+  { value: 'viewer', label: 'Viewer', disabled: true } // rendered but not interactive
+]
+```
+
+With the form builder:
+
+```tsx
+const fields = formBuilder()
+  .addCheckboxGroup('interests', {
+    label: 'Interests',
+    options: ['Sports', 'Music', 'Technology'],
+    inline: true,
+  })
+  .getFields();
+```
+
+The value is always an array of selected option values.
+
+![CheckboxGroup](screenshots/checkbox-group-field.png)
+*Inline checkbox group*
 
 #### Switch
 
