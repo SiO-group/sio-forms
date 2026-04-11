@@ -36,9 +36,9 @@ export const CheckboxGroup = ({
     const next = currentValue.includes(val)
       ? currentValue.filter(x => x !== val)
       : [...currentValue, val];
-    onChange(next);
 
-    if (setTouched) setTouched(true);
+    onChange(next);
+    setTouched?.(true);
   }
 
   return (
@@ -64,12 +64,13 @@ export const CheckboxGroup = ({
               ? { value: option, label: option }
               : option;
 
+          console.log(opt.value)
           return (
             <label
               htmlFor={`${id}-${opt.value}`}
               key={opt.value}
               className={
-                currentValue.includes(opt.value)
+                currentValue.includes(String(opt.value))
                   ? 'form-field--has-value'
                   : ''
               }>
@@ -78,7 +79,7 @@ export const CheckboxGroup = ({
                 type="checkbox"
                 id={`${id}-${opt.value}`}
                 value={opt.value}
-                checked={currentValue.includes(opt.value)}
+                checked={currentValue.includes(String(opt.value))}
                 onChange={(e) => handleChange(e)}
                 readOnly={readOnly}
                 disabled={opt.disabled || disabled}

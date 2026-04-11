@@ -21,7 +21,12 @@ function App() {
     })
     .addCheckboxGroup('lorem', {
       label: 'Het label',
-      options: ['1', '2', '3', '4'],
+      options: [
+        { label: 'lab1', value: 1 },
+        { label: 'lab2', value: 2 },
+        { label: 'lab3', value: 3 },
+        { label: 'lab4', value: 4 },
+      ],
       inline: true
     })
     .getFields();

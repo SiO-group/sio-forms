@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.24
+
+### Patch Changes
+
+- Bug: Fix where value number fails visual check
+
 ## 0.7.23
 
 ### Patch Changes
