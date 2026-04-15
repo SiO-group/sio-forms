@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.8
+
+### Patch Changes
+
+- Feat: Add rating input
+- Updated dependencies
+  - @sio-group/form-types@0.4.6
+
 ## 0.3.7
 
 ### Patch Changes

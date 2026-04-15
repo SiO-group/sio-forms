@@ -89,6 +89,12 @@ export type RadioFieldProps = BaseFieldProps & {
   inline: boolean;
 };
 
+export type RatingFieldProps = BaseFieldProps & {
+  type: "rating";
+  options: string[] | Option[];
+  showLabel: boolean;
+}
+
 export type CheckboxGroupFieldProps = BaseFieldProps & {
   type: "checkbox-group";
   options: string[] | Option[];
@@ -123,7 +129,8 @@ export type FieldProps =
   | SelectFieldProps
   | SelectableFieldProps
   | RadioFieldProps
+  | RatingFieldProps
   | CheckboxGroupFieldProps
   | SwitchFieldProps
   | SearchFieldProps
-  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "selectable" | "creatable" | "radio" | "checkbox-group" | "switch" | "search"> });
+  | (BaseFieldProps & { type: Exclude<FieldType, "file" | "textarea" | "range" | "date" | "time" | "datetime-local" | "url" | "select" | "selectable" | "creatable" | "radio" | "rating" | "checkbox-group" | "switch" | "search"> });

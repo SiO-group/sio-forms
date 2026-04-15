@@ -10,6 +10,7 @@ export type {
   SelectFieldProps,
   SelectableFieldProps,
   RadioFieldProps,
+  RatingFieldProps,
   CheckboxGroupFieldProps,
   SwitchFieldProps,
   SearchFieldProps,

@@ -121,6 +121,15 @@ export const createFieldProps = (field: FieldState, setters: FieldSetters, disab
     };
   }
 
+  if (field.type === "rating") {
+    return {
+      ...baseProps,
+      type: field.type,
+      options: field.options || [],
+      showLabel: field.showLabel ?? false,
+    };
+  }
+
   if (field.type === "checkbox-group") {
     return {
       ...baseProps,

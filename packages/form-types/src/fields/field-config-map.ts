@@ -4,7 +4,7 @@ import {
   FileFieldConfig, HiddenFieldConfig, NumberFieldConfig, PasswordFieldConfig, RadioFieldConfig, RangeFieldConfig,
   SearchFieldConfig, SelectFieldConfig, TelephoneFieldConfig,
   TextareaFieldConfig,
-  TextFieldConfig, UrlFieldConfig
+  TextFieldConfig, UrlFieldConfig, RatingFieldConfig
 } from "./field-config";
 import { Base } from "./base";
 
@@ -17,6 +17,7 @@ export type FieldConfigMap = {
   'checkbox-group': CheckboxGroupFieldConfig;
   switch: SwitchFieldConfig;
   radio: RadioFieldConfig;
+  rating: RatingFieldConfig;
   select: SelectFieldConfig;
   selectable: SelectFieldConfig;
   creatable: SelectFieldConfig;

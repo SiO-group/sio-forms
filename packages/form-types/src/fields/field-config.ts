@@ -116,6 +116,16 @@ export type TextareaFieldConfig = Base<'textarea'> & { rows?: number; cols?: num
 export type RadioFieldConfig = Base<'radio'> & { options: string[] | Option[]; inline?: boolean };
 
 /**
+ * Configuration for rating input fields.
+ * Extends the base configuration with rating-specific options.
+ *
+ * **Note:** `options` is required.
+ *
+ * @see {@link Base} for common options
+ */
+export type RatingFieldConfig = Base<'rating'> & { options: string[] | Option[]; showLabel?: boolean; };
+
+/**
  * Configuration for select and creatable input fields.
  * Extends the base configuration with select-specific options.
  *

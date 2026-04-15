@@ -9,6 +9,7 @@ export { FileInput } from './Input/FileInput';
 export { TextInput } from './Input/TextInput';
 export * from './InputWrapper';
 export * from './Radio';
+export * from './Rating';
 export * from './Select';
 export * from './Selectable';
 export * from './Textarea';

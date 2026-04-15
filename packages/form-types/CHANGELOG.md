@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.6
+
+### Patch Changes
+
+- Feat: Add rating input
+
 ## 0.4.5
 
 ### Patch Changes

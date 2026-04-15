@@ -29,6 +29,11 @@ function App() {
       ],
       inline: true
     })
+    .addRating('rating', {
+      label: 'Jouw rating',
+      options: ['1', '2', '3', '4', '5'],
+      showLabel: true,
+    })
     .getFields();
 
   return (

@@ -1,0 +1,106 @@
+:where(.form-field__rating .form-field__control) {
+  display: flex !important;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 8px;
+
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+:where(.form-field__rating .form-field__control label) {
+  display: flex;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+:where(.form-field__rating .form-field__control label > div) {
+  position: relative;
+  z-index: 3;
+  color: var(--sio-color-black);
+  font-weight: normal;
+}
+
+:where(.form-field__rating .form-field__control label):before {
+  content: '';
+  z-index: 1;
+  background-color: var(--sio-form-bg);
+  border: 1px solid var(--sio-form-border);
+  position: absolute;
+  border-radius: var(--sio-form-border-radius);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  left: 0;
+}
+
+:where(.form-field__rating .form-field__control label):after {
+  content: '';
+  z-index: 2;
+  background-color: var(--sio-color-primary);
+  position: absolute;
+  border-radius: var(--sio-form-border-radius);
+  cursor: pointer;
+  width: 21px;
+  height: 21px;
+  top: 2px;
+  left: 3px;
+  transform: scale(0);
+  transition: all .4s;
+}
+
+:where(.form-field__rating label.form-field--has-value):before {
+  border-color: var(--sio-color-primary);
+}
+
+:where(.form-field__rating label.form-field--has-value):after {
+  transform: scale(1);
+}
+
+:where(.form-field__rating input[type='radio']) {
+  display: none !important;
+}
+
+:where(.form-field__rating.form-field--has-errors label):before {
+  border-color: var(--sio-color-error);
+  background: rgba(var(--sio-color-error-rgb), .06);
+}
+
+:where(.form-field__rating.form-field--has-errors label.form-field--has-value):after {
+  border-color: var(--sio-color-error);
+  background: var(--sio-color-error);
+}
+
+:where(.form-field__rating.form-field--disabled .form-field__control label) {
+  cursor: not-allowed;
+}
+
+:where(.form-field__rating.form-field--disabled .form-field__control label):before,
+:where(.form-field__rating.form-field--disabled .form-field__control label):after {
+  cursor: not-allowed;
+}
+
+:where(.form-field__rating.form-field--disabled .form-field__control label):before {
+  border-color: var(--sio-color-light-gray);
+  background-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, white);
+}
+
+:where(.form-field__rating.form-field--disabled .form-field__control label):after {
+  border-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, black);
+  background-color: color-mix(in srgb, var(--sio-color-light-gray) 75%, black);
+
+  transform: scale(0);
+  transition: all .4s;
+}
+
+:where(.form-field__rating.form-field--disabled .form-field__control label.form-field--has-value):before {
+  border-color: var(--sio-color-light-gray);
+}
+
+:where(.form-field__rating.form-field--disabled .form-field__control label.form-field--has-value):after {
+  transform: scale(1);
+}

@@ -1,15 +1,15 @@
 import React from "react";
 import { Option } from "@sio-group/form-types";
-import { CheckboxGroupFieldProps } from "../../../types/field-props";
+import { RatingFieldProps } from "../../../types/field-props";
 import InputWrapper from "../InputWrapper";
 import { Icon } from "../../Icon";
 
-export const CheckboxGroup = ({
+export const Rating = ({
   value,
   onChange,
 
   options,
-  inline,
+  showLabel,
 
   name,
   id,
@@ -27,20 +27,7 @@ export const CheckboxGroup = ({
   type,
   className,
   style,
-}: CheckboxGroupFieldProps) => {
-  const currentValue = (value as string[]) ?? [];
-
-  const handleChange = (e: any) => {
-    const val = e.target.value;
-
-    const next = currentValue.includes(val)
-      ? currentValue.filter(x => x !== val)
-      : [...currentValue, val];
-
-    onChange(next);
-    setTouched?.(true);
-  }
-
+}: RatingFieldProps) => {
   return (
     <InputWrapper
       type={type}
@@ -52,7 +39,7 @@ export const CheckboxGroup = ({
       disabled={disabled || readOnly}
       hasError={errors.length > 0 && touched}
       errors={errors}
-      className={`${className ?? ''}${inline ? ' form-field__checkbox-inline' : ''}`}
+      className={`${className ?? ''}`}
       style={style}
       hideLayout>
       <Icon icon={icon} />
@@ -69,21 +56,24 @@ export const CheckboxGroup = ({
               htmlFor={`${id}-${opt.value}`}
               key={opt.value}
               className={
-                currentValue.includes(String(opt.value))
+                value === opt.value
                   ? 'form-field--has-value'
                   : ''
               }>
               <input
-                name={`${name}-${opt.value}`}
-                type="checkbox"
+                name={name}
+                type="radio"
                 id={`${id}-${opt.value}`}
                 value={opt.value}
-                checked={currentValue.includes(String(opt.value))}
-                onChange={(e) => handleChange(e)}
+                checked={value === opt.value}
+                onChange={() => {
+                  if (onChange) onChange(opt.value);
+                  if (setTouched) setTouched(true);
+                }}
                 readOnly={readOnly}
                 disabled={opt.disabled || disabled}
               />
-              <div>{opt.label}</div>
+              {showLabel && <div>{opt.label}</div>}
             </label>
           );
         })}
